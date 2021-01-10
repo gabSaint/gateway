@@ -30,8 +30,13 @@ describe("FormGateways", () => {
     expect(inputaddress).toHaveLength(1);
   });
 
-  it("renders add gateway button", () => {
-    const buttoncreate = mountedGatewayForm.find("button");
-    expect(buttoncreate).toHaveLength(1);
+  it("renders submit button", () => {
+    const buttonsubmit = mountedGatewayForm.find("button#button-submit-form");
+    expect(buttonsubmit).toHaveLength(1);
+  });
+
+  it("renders cancel button", () => {
+    const buttoncancel = mountedGatewayForm.find("button#button-cancel-form");
+    expect(buttoncancel).toHaveLength(1);
   });
 });

@@ -12,7 +12,8 @@ function GatewayForm() {
       <h5>IPv4 Address</h5>
       <input id="input-address" />
 
-      <button>Add gateway</button>
+      <button id="button-submit-form">Submit</button>
+      <button id="button-cancel-form">Cancel</button>
     </form>
   );
 }
