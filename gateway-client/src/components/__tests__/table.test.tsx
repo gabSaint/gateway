@@ -26,7 +26,7 @@ describe("Table", () => {
   });
 });
 
-describe("When a head is passed to the component", () => {
+describe("When a header is passed to the component", () => {
   let mountedTable: ReactWrapper | ShallowWrapper;
   let props: TableProps;
 

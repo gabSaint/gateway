@@ -10,30 +10,23 @@ describe("ListGateways", () => {
     mountedListGateways = shallow(<ListGateways />);
   });
 
+  describe("Header", () => {
+    it("renders title", () => {
+      const title = mountedListGateways.find("h4");
+      expect(title).toHaveLength(1);
+    });
+
+    it("renders create new gateway button", () => {
+      const newgatewaybuttons = mountedListGateways.find("button#new-gateway");
+      expect(newgatewaybuttons).toHaveLength(1);
+      expect(newgatewaybuttons.text()).toBe("Add gateway");
+    });
+  });
+
   describe("Table", () => {
-    it("renders a table", () => {
-      const tables = mountedListGateways.find("table");
+    it("renders Table", () => {
+      const tables = mountedListGateways.find("Table");
       expect(tables).toHaveLength(1);
-    });
-
-    it("renders a table header", () => {
-      const tableheaders = mountedListGateways.find("thead");
-      expect(tableheaders).toHaveLength(1);
-    });
-
-    it("renders 4 table head columns", () => {
-      const tableheadcolumns = mountedListGateways.find("th");
-      expect(tableheadcolumns).toHaveLength(4);
-    });
-
-    it("renders a table body", () => {
-      const tablebodies = mountedListGateways.find("tbody");
-      expect(tablebodies).toHaveLength(1);
-    });
-
-    it("renders more than one", () => {
-      const tablerows = mountedListGateways.find("tr");
-      expect(tablerows.length).toBeGreaterThanOrEqual(1);
     });
 
     it("renders 4 td foreach tr in body", () => {
@@ -64,13 +57,6 @@ describe("ListGateways", () => {
     it("renders delete buttons for each gateway", () => {
       const deletebuttons = mountedListGateways.find("button.button-delete");
       expect(deletebuttons).toHaveLength(tablebodyLastcolumns.length);
-    });
-
-    // create gateway
-    it("renders create new gateway button", () => {
-      const newgatewaybuttons = mountedListGateways.find("button#new-gateway");
-      expect(newgatewaybuttons).toHaveLength(1);
-      expect(newgatewaybuttons.text()).toBe("Add gateway");
     });
   });
 });
