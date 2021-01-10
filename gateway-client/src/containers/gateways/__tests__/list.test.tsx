@@ -43,4 +43,27 @@ describe("ListGateways", () => {
       expect(tablebodycolumns.length).toBe(4 * tablebodyrows.length);
     });
   });
+
+  describe("buttons", () => {
+    let tablebodyLastcolumns;
+
+    beforeEach(() => {
+      tablebodyLastcolumns = mountedListGateways.find("td:last-child");
+    });
+
+    it("renders view buttons for each gateway", () => {
+      const viewbuttons = mountedListGateways.find("button.button-view");
+      expect(viewbuttons).toHaveLength(tablebodyLastcolumns.length);
+    });
+
+    it("renders edit buttons for each gateway", () => {
+      const editbuttons = mountedListGateways.find("button.button-edit");
+      expect(editbuttons).toHaveLength(tablebodyLastcolumns.length);
+    });
+
+    it("renders delete buttons for each gateway", () => {
+      const deletebuttons = mountedListGateways.find("button.button-delete");
+      expect(deletebuttons).toHaveLength(tablebodyLastcolumns.length);
+    });
+  });
 });
