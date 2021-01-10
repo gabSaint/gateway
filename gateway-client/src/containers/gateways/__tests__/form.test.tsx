@@ -10,6 +10,11 @@ describe("FormGateways", () => {
     mountedGatewayForm = shallow(<Form />);
   });
 
+  it("renders form", () => {
+    const forms = mountedGatewayForm.find("form");
+    expect(forms).toHaveLength(1);
+  });
+
   it("renders serial number input", () => {
     const inputserialnumbers = mountedGatewayForm.find("input#input-serialnum");
     expect(inputserialnumbers).toHaveLength(1);

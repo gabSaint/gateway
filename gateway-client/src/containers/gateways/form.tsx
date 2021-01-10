@@ -2,7 +2,7 @@ import React from "react";
 
 function GatewayForm() {
   return (
-    <React.Fragment>
+    <form>
       <h5>Serial Number</h5>
       <input id="input-serialnum" />
 
@@ -13,7 +13,7 @@ function GatewayForm() {
       <input id="input-address" />
 
       <button>Add gateway</button>
-    </React.Fragment>
+    </form>
   );
 }
 
