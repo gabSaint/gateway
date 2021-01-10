@@ -51,6 +51,7 @@ describe("ListGateways", () => {
       tablebodyLastcolumns = mountedListGateways.find("td:last-child");
     });
 
+    // Operation buttons
     it("renders view buttons for each gateway", () => {
       const viewbuttons = mountedListGateways.find("button.button-view");
       expect(viewbuttons).toHaveLength(tablebodyLastcolumns.length);
@@ -64,6 +65,12 @@ describe("ListGateways", () => {
     it("renders delete buttons for each gateway", () => {
       const deletebuttons = mountedListGateways.find("button.button-delete");
       expect(deletebuttons).toHaveLength(tablebodyLastcolumns.length);
+    });
+
+    // create gateway
+    it("renders create new gateway button", () => {
+      const newgatewaybuttons = mountedListGateways.find("button#new-gateway");
+      expect(newgatewaybuttons).toHaveLength(1);
     });
   });
 });
