@@ -10,32 +10,29 @@ describe("ShowGateway", () => {
     mountedShowGateway = shallow(<ShowGateway />);
   });
 
-  //test the header
+  describe("Header", () => {
+    it("renders title", () => {
+      const title = mountedShowGateway.find("h4");
+      expect(title).toHaveLength(1);
+    });
+
+    it("renders create new gateway button", () => {
+      const newgatewaybuttons = mountedShowGateway.find(
+        "button#button-add-peripheral"
+      );
+      expect(newgatewaybuttons).toHaveLength(1);
+      expect(newgatewaybuttons.text()).toBe("Add peripheral");
+    });
+  });
 
   describe("Table for peripherals", () => {
     it("renders a table", () => {
-      const tables = mountedShowGateway.find("table");
+      const tables = mountedShowGateway.find("Table");
       expect(tables).toHaveLength(1);
     });
 
-    it("renders a table header", () => {
-      const tableheaders = mountedShowGateway.find("thead");
-      expect(tableheaders).toHaveLength(1);
-    });
-
-    it("renders 5 table head columns", () => {
-      const tableheadcolumns = mountedShowGateway.find("th");
-      expect(tableheadcolumns).toHaveLength(5);
-    });
-
-    it("renders a table body", () => {
-      const tablebodies = mountedShowGateway.find("tbody");
-      expect(tablebodies).toHaveLength(1);
-    });
-
-    it("renders more than one & less than 11 table rows", () => {
+    it("renders less than 11 table rows", () => {
       const tablerows = mountedShowGateway.find("tr");
-      expect(tablerows.length).toBeGreaterThanOrEqual(1);
       expect(tablerows.length).toBeLessThanOrEqual(11);
     });
 
@@ -53,7 +50,6 @@ describe("ShowGateway", () => {
       tablebodyLastcolumns = mountedShowGateway.find("td:last-child");
     });
 
-    // Operation buttons
     it("renders edit buttons for each gateway", () => {
       const editbuttons = mountedShowGateway.find("button.button-edit");
       expect(editbuttons).toHaveLength(tablebodyLastcolumns.length);
@@ -62,15 +58,6 @@ describe("ShowGateway", () => {
     it("renders delete buttons for each gateway", () => {
       const deletebuttons = mountedShowGateway.find("button.button-delete");
       expect(deletebuttons).toHaveLength(tablebodyLastcolumns.length);
-    });
-
-    // add peripheral
-    it("renders add new periferal button", () => {
-      const newperiferalbuttons = mountedShowGateway.find(
-        "button#add-peripheral"
-      );
-      expect(newperiferalbuttons).toHaveLength(1);
-      expect(newperiferalbuttons.text()).toBe("Add peripheral");
     });
   });
 });
