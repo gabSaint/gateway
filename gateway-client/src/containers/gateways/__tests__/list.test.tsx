@@ -10,7 +10,7 @@ describe("ListGateways", () => {
     mountedListGateways = shallow(<ListGateways />);
   });
 
-  describe("table", () => {
+  describe("Table", () => {
     it("renders a table", () => {
       const tables = mountedListGateways.find("table");
       expect(tables).toHaveLength(1);
@@ -31,10 +31,9 @@ describe("ListGateways", () => {
       expect(tablebodies).toHaveLength(1);
     });
 
-    it("renders more than one & less than 11 table rows", () => {
+    it("renders more than one", () => {
       const tablerows = mountedListGateways.find("tr");
       expect(tablerows.length).toBeGreaterThanOrEqual(1);
-      expect(tablerows.length).toBeLessThanOrEqual(11);
     });
 
     it("renders 4 td foreach tr in body", () => {
@@ -44,7 +43,7 @@ describe("ListGateways", () => {
     });
   });
 
-  describe("buttons", () => {
+  describe("Buttons", () => {
     let tablebodyLastcolumns;
 
     beforeEach(() => {
@@ -71,6 +70,7 @@ describe("ListGateways", () => {
     it("renders create new gateway button", () => {
       const newgatewaybuttons = mountedListGateways.find("button#new-gateway");
       expect(newgatewaybuttons).toHaveLength(1);
+      expect(newgatewaybuttons.text()).toBe("Add gateway");
     });
   });
 });
