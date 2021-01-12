@@ -4,7 +4,7 @@ import Peripheral, { Status } from "../../models/peripheral";
 import ListPeripherals from "../peripherals/list";
 
 function ShowGateway() {
-  const gateway = new Gateway("1234oi78", "gate1", "127.0.0.1");
+  const gateway = new Gateway(1, "1234oi78", "gate1", "127.0.0.1");
   const peripherals = [
     new Peripheral(1, "ASF", "21/23/24", Status.online),
     new Peripheral(2, "ASFX", "21/23/24", Status.offline),
@@ -13,7 +13,7 @@ function ShowGateway() {
   return (
     <React.Fragment>
       <h4>
-        {gateway.name} - {gateway.serialNumber} - {gateway.address}
+        {gateway.name} - {gateway.serial} - {gateway.address}
       </h4>
       <ListPeripherals peripherals={peripherals} />
       <button id="button-add-peripheral">Add peripheral</button>

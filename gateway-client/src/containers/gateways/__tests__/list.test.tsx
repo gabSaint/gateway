@@ -17,7 +17,7 @@ describe("ListGateways", () => {
     });
 
     it("renders create new gateway button", () => {
-      const newgatewaybuttons = mountedListGateways.find("button#new-gateway");
+      const newgatewaybuttons = mountedListGateways.find("#button-new-gateway");
       expect(newgatewaybuttons).toHaveLength(1);
       expect(newgatewaybuttons.text()).toBe("Add gateway");
     });
@@ -29,10 +29,10 @@ describe("ListGateways", () => {
       expect(tables).toHaveLength(1);
     });
 
-    it("renders 4 td foreach tr in body", () => {
+    it("renders 5 td foreach tr in body", () => {
       const tablebodyrows = mountedListGateways.find("tbody>tr");
       const tablebodycolumns = mountedListGateways.find("tbody>tr>td");
-      expect(tablebodycolumns.length).toBe(4 * tablebodyrows.length);
+      expect(tablebodycolumns.length).toBe(5 * tablebodyrows.length);
     });
   });
 
@@ -43,7 +43,6 @@ describe("ListGateways", () => {
       tablebodyLastcolumns = mountedListGateways.find("td:last-child");
     });
 
-    // Operation buttons
     it("renders view buttons for each gateway", () => {
       const viewbuttons = mountedListGateways.find("button.button-view");
       expect(viewbuttons).toHaveLength(tablebodyLastcolumns.length);

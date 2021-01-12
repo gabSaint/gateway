@@ -1,19 +1,28 @@
 import React from "react";
-import { Formik, Field, Form, FormikHelpers } from "formik";
+import { Formik, Field, Form } from "formik";
 import Gateway from "../../models/gateway";
 
-interface Props {
+export interface Props {
   gateway: Gateway;
 }
 
 function GatewayForm(props: Props) {
-  const initialValues = { id: "", serial: "", name: "", address: "" };
+  const initialValues = {
+    id: props.gateway.id,
+    serial: "",
+    name: "",
+    address: "",
+  };
 
-  // const handlerSubmit = (gateway: Gateway) => {};
+  const handlerSubmit = (gateway: Gateway) => {
+    setTimeout(() => {
+      alert(JSON.stringify(gateway, null, 2));
+    }, 500);
+  };
 
   return (
     <React.Fragment>
-      <Formik initialValues={props.gateway} onSubmit={(g) => {}}>
+      <Formik initialValues={props.gateway} onSubmit={handlerSubmit}>
         <Form>
           <label htmlFor="input-serial">Serial Number</label>
           <Field id="input-serial" name="serial" />

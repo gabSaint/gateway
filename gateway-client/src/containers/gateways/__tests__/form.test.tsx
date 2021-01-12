@@ -1,17 +1,23 @@
 import React from "react";
 import { ReactWrapper, shallow, ShallowWrapper } from "enzyme";
 
-import Form from "../form";
+import Form, { Props as FormGatewaysProps } from "../form";
+import Gateway from "../../../models/gateway";
 
 describe("FormGateways", () => {
   let mountedGatewayForm: ReactWrapper | ShallowWrapper;
+  let props: FormGatewaysProps;
 
   beforeEach(() => {
-    mountedGatewayForm = shallow(
-      <Form
-        gateway={{ serial: "24589", name: "gateway1", address: "127.0.27.1" }}
-      />
-    );
+    props = {
+      gateway: {
+        id: 1,
+        serial: "24589",
+        name: "gateway1",
+        address: "127.0.27.1",
+      },
+    };
+    mountedGatewayForm = shallow(<Form {...props} />);
   });
 
   describe("Form", () => {
