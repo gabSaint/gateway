@@ -7,36 +7,42 @@ describe("FormGateways", () => {
   let mountedGatewayForm: ReactWrapper | ShallowWrapper;
 
   beforeEach(() => {
-    mountedGatewayForm = shallow(<Form />);
+    mountedGatewayForm = shallow(
+      <Form
+        gateway={{ serial: "24589", name: "gateway1", address: "127.0.27.1" }}
+      />
+    );
   });
 
-  it("renders form", () => {
-    const forms = mountedGatewayForm.find("form");
-    expect(forms).toHaveLength(1);
-  });
+  describe("Form", () => {
+    it("renders form", () => {
+      const formik = mountedGatewayForm.find("Formik");
+      expect(formik).toHaveLength(1);
+    });
 
-  it("renders serial number input", () => {
-    const inputserialnumbers = mountedGatewayForm.find("input#input-serialnum");
-    expect(inputserialnumbers).toHaveLength(1);
-  });
+    it("renders serial number input", () => {
+      const inputserialnumbers = mountedGatewayForm.find("#input-serial");
+      expect(inputserialnumbers).toHaveLength(1);
+    });
 
-  it("renders name input", () => {
-    const inputnames = mountedGatewayForm.find("input#input-name");
-    expect(inputnames).toHaveLength(1);
-  });
+    it("renders name input", () => {
+      const inputnames = mountedGatewayForm.find("#input-name");
+      expect(inputnames).toHaveLength(1);
+    });
 
-  it("renders address input", () => {
-    const inputaddress = mountedGatewayForm.find("input#input-address");
-    expect(inputaddress).toHaveLength(1);
-  });
+    it("renders address input", () => {
+      const inputaddress = mountedGatewayForm.find("#input-address");
+      expect(inputaddress).toHaveLength(1);
+    });
 
-  it("renders submit button", () => {
-    const buttonsubmit = mountedGatewayForm.find("button#button-submit-form");
-    expect(buttonsubmit).toHaveLength(1);
-  });
+    it("renders submit button", () => {
+      const buttonsubmit = mountedGatewayForm.find("button[type='submit']");
+      expect(buttonsubmit).toHaveLength(1);
+    });
 
-  it("renders cancel button", () => {
-    const buttoncancel = mountedGatewayForm.find("button#button-cancel-form");
-    expect(buttoncancel).toHaveLength(1);
+    it("renders cancel button", () => {
+      const buttoncancel = mountedGatewayForm.find("button[type='button']");
+      expect(buttoncancel).toHaveLength(1);
+    });
   });
 });

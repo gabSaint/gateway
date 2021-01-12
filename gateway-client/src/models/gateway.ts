@@ -1,6 +1,6 @@
 export default class Gateway {
   constructor(
-    public serialNumber: string,
+    public serial: string,
     public name: string,
     public address: string
   ) {}

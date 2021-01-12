@@ -1,20 +1,34 @@
 import React from "react";
+import { Formik, Field, Form, FormikHelpers } from "formik";
+import Gateway from "../../models/gateway";
 
-function GatewayForm() {
+interface Props {
+  gateway: Gateway;
+}
+
+function GatewayForm(props: Props) {
+  const initialValues = { id: "", serial: "", name: "", address: "" };
+
+  // const handlerSubmit = (gateway: Gateway) => {};
+
   return (
-    <form>
-      <h5>Serial Number</h5>
-      <input id="input-serialnum" />
+    <React.Fragment>
+      <Formik initialValues={props.gateway} onSubmit={(g) => {}}>
+        <Form>
+          <label htmlFor="input-serial">Serial Number</label>
+          <Field id="input-serial" name="serial" />
 
-      <h5>Name</h5>
-      <input id="input-name" />
+          <label htmlFor="input-name">Last Name</label>
+          <Field id="input-name" name="name" />
 
-      <h5>IPv4 Address</h5>
-      <input id="input-address" />
+          <label htmlFor="input-address">IPv4 Address</label>
+          <Field id="input-address" name="address" />
 
-      <button id="button-submit-form">Submit</button>
-      <button id="button-cancel-form">Cancel</button>
-    </form>
+          <button type="submit">Submit</button>
+          <button type="button">Cancel</button>
+        </Form>
+      </Formik>
+    </React.Fragment>
   );
 }
 
