@@ -2,7 +2,6 @@ import React from "react";
 import { ReactWrapper, shallow, ShallowWrapper } from "enzyme";
 
 import Form, { Props as FormGatewaysProps } from "../form";
-import Gateway from "../../../models/gateway";
 
 describe("FormGateways", () => {
   let mountedGatewayForm: ReactWrapper | ShallowWrapper;
