@@ -4,25 +4,15 @@ import Gateway from "../../models/gateway";
 
 export interface Props {
   gateway: Gateway;
+  handleSubmit(g: Gateway): void;
 }
 
 function GatewayForm(props: Props) {
-  const initialValues = {
-    id: props.gateway.id,
-    serial: "",
-    name: "",
-    address: "",
-  };
-
-  const handlerSubmit = (gateway: Gateway) => {
-    setTimeout(() => {
-      alert(JSON.stringify(gateway, null, 2));
-    }, 500);
-  };
+  const { gateway, handleSubmit } = props;
 
   return (
     <React.Fragment>
-      <Formik initialValues={props.gateway} onSubmit={handlerSubmit}>
+      <Formik initialValues={gateway} onSubmit={handleSubmit}>
         <Form>
           <label htmlFor="input-serial">Serial Number</label>
           <Field id="input-serial" name="serial" />
@@ -34,6 +24,7 @@ function GatewayForm(props: Props) {
           <Field id="input-address" name="address" />
 
           <button type="submit">Submit</button>
+
           <button type="button">Cancel</button>
         </Form>
       </Formik>

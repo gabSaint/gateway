@@ -2,6 +2,7 @@ import React from "react";
 import { ReactWrapper, shallow, ShallowWrapper } from "enzyme";
 
 import ListGateways from "../list";
+import Gateway from "../../../models/gateway";
 
 describe("ListGateways", () => {
   let mountedListGateways: ShallowWrapper | ReactWrapper;
@@ -51,11 +52,6 @@ describe("ListGateways", () => {
     it("renders edit buttons for each gateway", () => {
       const editbuttons = mountedListGateways.find("button.button-edit");
       expect(editbuttons).toHaveLength(tablebodyLastcolumns.length);
-    });
-
-    it("renders delete buttons for each gateway", () => {
-      const deletebuttons = mountedListGateways.find("button.button-delete");
-      expect(deletebuttons).toHaveLength(tablebodyLastcolumns.length);
     });
   });
 });

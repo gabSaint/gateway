@@ -16,6 +16,7 @@ describe("FormGateways", () => {
         name: "gateway1",
         address: "127.0.27.1",
       },
+      handleSubmit: jest.fn(),
     };
     mountedGatewayForm = shallow(<Form {...props} />);
   });

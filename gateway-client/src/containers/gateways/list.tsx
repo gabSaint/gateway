@@ -25,7 +25,6 @@ function ListGateways() {
             <td>
               <button className="button-view">view</button>
               <button className="button-edit">edit</button>
-              <button className="button-delete">delete</button>
             </td>
           </tr>
         ))}
