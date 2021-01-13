@@ -24,11 +24,6 @@ describe("PeripheralForm", () => {
     const formik = mountedPeripheralForm.find("Formik");
     expect(formik).toHaveLength(1);
   });
-
-  it("renders cancel button", () => {
-    const buttoncancel = mountedPeripheralForm.find("button[type='button']");
-    expect(buttoncancel).toHaveLength(1);
-  });
 });
 
 describe("FormContent", () => {
@@ -39,6 +34,7 @@ describe("FormContent", () => {
     props = {
       errors: { uid: "error", vendor: "error", status: "error" },
       touched: { uid: true, vendor: true, status: true },
+      values: { uid: 123, vendor: "ATS", status: "online" },
     } as FormikState<Peripheral>;
     mountedPeripheralFormContent = shallow(<FormContent {...props} />);
   });
@@ -46,9 +42,16 @@ describe("FormContent", () => {
   describe("Form", () => {
     it("renders submit button", () => {
       const buttonsubmit = mountedPeripheralFormContent.find(
-        "button[type='submit']"
+        "[data-test='button-submit']"
       );
       expect(buttonsubmit).toHaveLength(1);
+    });
+
+    it("renders cancel button", () => {
+      const buttoncancel = mountedPeripheralFormContent.find(
+        "[data-test='button-cancel']"
+      );
+      expect(buttoncancel).toHaveLength(1);
     });
 
     it("renders uid input", () => {

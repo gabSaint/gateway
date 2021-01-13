@@ -40,6 +40,7 @@ describe("FormContent", () => {
     props = {
       errors: { serial: "error", name: "error", address: "error" },
       touched: { serial: true, name: true, address: true },
+      values: { id: 1, name: "gate1", serial: "123", address: "127.0.0.1" },
     } as FormikState<Gateway>;
     mountedGatewayFormContent = shallow(<FormContent {...props} />);
   });
