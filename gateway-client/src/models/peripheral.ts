@@ -3,11 +3,7 @@ export default class Peripheral {
     public uid: number,
     public vendor: string,
     public date: string,
-    public status: Status
+    public status: "online" | "offline",
+    public gatewayId: number
   ) {}
-}
-
-export enum Status {
-  "online",
-  "offline",
 }

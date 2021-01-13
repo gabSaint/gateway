@@ -1,13 +1,13 @@
 import React from "react";
 import Gateway from "../../models/gateway";
-import Peripheral, { Status } from "../../models/peripheral";
+import Peripheral from "../../models/peripheral";
 import ListPeripherals from "../peripherals/list";
 
 function ShowGateway() {
   const gateway = new Gateway(1, "1234oi78", "gate1", "127.0.0.1");
   const peripherals = [
-    new Peripheral(1, "ASF", "21/23/24", Status.online),
-    new Peripheral(2, "ASFX", "21/23/24", Status.offline),
+    new Peripheral(1, "ASF", "21/23/24", "online", 1),
+    new Peripheral(2, "ASFX", "21/23/24", "offline", 2),
   ];
 
   return (
