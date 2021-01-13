@@ -13,7 +13,9 @@ function ListGateways() {
   return (
     <React.Fragment>
       <h4>Gateways</h4>
-      <button id="button-new-gateway">Add gateway</button>
+      <Link to="/gateways/create">
+        <button id="button-new-gateway">Add gateway</button>
+      </Link>
       <Table
         headers={["Id", "Serial number", "Name", "Ipv4 Address", "Operations"]}
       >
@@ -24,10 +26,12 @@ function ListGateways() {
             <td>{gate.name}</td>
             <td>{gate.address}</td>
             <td>
-              <Link to="">
+              <Link to={`/gateways/${gate.id}`}>
                 <button className="button-view">view</button>
               </Link>
-              <button className="button-edit">edit</button>
+              <Link to={`/gateways/${gate.id}/edit`}>
+                <button className="button-edit">edit</button>
+              </Link>
             </td>
           </tr>
         ))}

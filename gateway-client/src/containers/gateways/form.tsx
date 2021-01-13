@@ -1,6 +1,7 @@
 import React from "react";
 import { Formik, Field, Form, FormikProps, FormikState } from "formik";
 import Gateway from "../../models/gateway";
+import { Link } from "react-router-dom";
 
 export interface Props {
   gateway: Gateway;
@@ -46,7 +47,9 @@ export function FormContent({ errors, touched }: FormikState<Gateway>) {
 
       <button type="submit">Submit</button>
 
-      <button type="button">Cancel</button>
+      <Link to="/">
+        <button type="button">Cancel</button>
+      </Link>
     </Form>
   );
 }
