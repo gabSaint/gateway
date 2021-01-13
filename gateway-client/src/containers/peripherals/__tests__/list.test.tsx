@@ -3,15 +3,11 @@ import { ReactWrapper, shallow, ShallowWrapper } from "enzyme";
 
 import ListPeripherals, { Props as PeriferalProps } from "../list";
 import Peripheral from "../../../models/peripheral";
-import { useParams } from "react-router-dom";
 
 describe("ListPeripherals", () => {
   let mountedListPeripherals: ShallowWrapper | ReactWrapper;
 
   beforeEach(() => {
-    // @ts-ignore
-    useParams.mockImplementationOnce(() => ({ id: "1", gateway_id: "1" }));
-
     mountedListPeripherals = shallow(<ListPeripherals peripherals={[]} />);
   });
 
@@ -54,9 +50,6 @@ describe("When a peripheral is passed to the component", () => {
   let props: PeriferalProps;
 
   beforeEach(() => {
-    // @ts-ignore
-    useParams.mockImplementationOnce(() => ({ id: "1", gateway_id: "1" }));
-
     props = {
       peripherals: [new Peripheral(1, "ASF", "21/23/24", "online", 1)],
     };
