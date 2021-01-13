@@ -15,7 +15,9 @@ function UpdateGateway() {
     // setGateways(newList);
   }
 
-  const handleSubmit = () => {};
+  const handleSubmit = (gateway: Gateway) => {
+    console.log("Gateway edited", gateway);
+  };
 
   return (
     <React.Fragment>

@@ -31,11 +31,10 @@ function ListPeripherals(props: Props) {
             <td>{peripheral.status}</td>
             <td>
               <Link to={`/gateways/${gateway_id}/peripherals/${id}/edit`}>
-                <button className="button-edit">edit</button>
+                <button className="button-edit" data-test="form-button-edit">
+                  edit
+                </button>
               </Link>
-              <button className="button-delete" onClick={handleClick}>
-                delette
-              </button>
             </td>
           </tr>
         ))}

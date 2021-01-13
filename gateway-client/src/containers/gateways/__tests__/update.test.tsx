@@ -1,8 +1,8 @@
 import React from "react";
 import { ReactWrapper, shallow, ShallowWrapper } from "enzyme";
+import { useParams } from "react-router-dom";
 
 import UpdateGateways from "../update";
-import { useParams } from "react-router-dom";
 
 describe("UpdateGateways", () => {
   let mountedUpdateGateways: ShallowWrapper | ReactWrapper;

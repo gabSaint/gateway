@@ -40,14 +40,11 @@ describe("ListPeripherals", () => {
       tablebodyLastcolumns = mountedListPeripherals.find("td:last-child");
     });
 
-    it("renders edit buttons for each gateway", () => {
-      const editbuttons = mountedListPeripherals.find("button.button-edit");
+    it("renders edit buttons for each peripheral", () => {
+      const editbuttons = mountedListPeripherals.find(
+        "[data-test='form-button-edit']"
+      );
       expect(editbuttons).toHaveLength(tablebodyLastcolumns.length);
-    });
-
-    it("renders delete buttons for each gateway", () => {
-      const deletebuttons = mountedListPeripherals.find("button.button-delete");
-      expect(deletebuttons).toHaveLength(tablebodyLastcolumns.length);
     });
   });
 });
