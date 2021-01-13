@@ -9,15 +9,7 @@ function CreateGateway() {
 
   return (
     <React.Fragment>
-      <GatewayForm
-        gateway={{
-          id: -1,
-          serial: "",
-          name: "",
-          address: "",
-        }}
-        handleSubmit={handleSubmit}
-      />
+      <GatewayForm gateway={{} as Gateway} handleSubmit={handleSubmit} />
     </React.Fragment>
   );
 }

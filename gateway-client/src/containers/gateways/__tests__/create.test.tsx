@@ -1,10 +1,17 @@
 import React from "react";
-import { shallow } from "enzyme";
+import { ReactWrapper, shallow, ShallowWrapper } from "enzyme";
 
 import CreateGateways from "../create";
 
 describe("CreateGateways", () => {
-  it("renders without crashing", () => {
-    let mountedCreateGateways = shallow(<CreateGateways />);
+  let mountedCreateGateways: ReactWrapper | ShallowWrapper;
+
+  beforeAll(() => {
+    mountedCreateGateways = shallow(<CreateGateways />);
+  });
+
+  it("renders form", () => {
+    const form = mountedCreateGateways.find("GatewayForm");
+    expect(form).toHaveLength(1);
   });
 });
