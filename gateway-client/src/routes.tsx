@@ -12,9 +12,6 @@ export default function Routes() {
     <Router>
       <Switch>
         <Route exact path="/" component={ListGateways} />
-        <Route path="/gateways/create" component={CreateGateway} />
-        <Route path="/gateways/:id/edit" component={UpdateGateway} />
-        <Route path="/gateways/:id" component={ShowGateway} />
         <Route
           path="/gateways/:id/peripherals/create"
           component={CreatePeripheral}
@@ -23,6 +20,9 @@ export default function Routes() {
           path="/gateways/:gateway_id/peripherals/:id/edit"
           component={UpdatePeripheral}
         />
+        <Route path="/gateways/create" component={CreateGateway} />
+        <Route path="/gateways/:id/edit" component={UpdateGateway} />
+        <Route path="/gateways/:id" component={ShowGateway} />
       </Switch>
     </Router>
   );

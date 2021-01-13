@@ -1,5 +1,5 @@
 import React from "react";
-import { Field, Form, Formik, FormikState } from "formik";
+import { Formik, Field, Form, FormikState } from "formik";
 import Peripheral from "models/peripheral";
 import { Link } from "react-router-dom";
 
@@ -13,14 +13,16 @@ function PeripheralForm(props: Props) {
 
   return (
     <React.Fragment>
+      <Link to={`/gateways/${peripheral.gatewayId}`}>
+        <button type="button">Cancel</button>
+      </Link>
       <Formik
         initialValues={peripheral}
         onSubmit={handleSubmit}
         validate={validate}
-      ></Formik>
-      <Link to={`/gateways/${peripheral.gatewayId}`}>
-        <button type="button">Cancel</button>
-      </Link>
+      >
+        {(formikProps) => <FormContent {...formikProps} />}
+      </Formik>
     </React.Fragment>
   );
 }

@@ -23,7 +23,7 @@ function UpdatePeripheral() {
         data-test="form-button-delete"
         onClick={handleRemove}
       >
-        Delette Peripheral
+        Delete Peripheral
       </button>
       <PeripheralForm
         peripheral={{} as Peripheral}

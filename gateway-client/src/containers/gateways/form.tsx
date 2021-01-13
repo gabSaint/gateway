@@ -1,5 +1,5 @@
 import React from "react";
-import { Formik, Field, Form, FormikProps, FormikState } from "formik";
+import { Formik, Field, Form, FormikState } from "formik";
 import Gateway from "../../models/gateway";
 import { Link } from "react-router-dom";
 
