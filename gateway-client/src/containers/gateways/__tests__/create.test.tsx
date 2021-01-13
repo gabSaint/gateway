@@ -6,7 +6,7 @@ import CreateGateways from "../create";
 describe("CreateGateways", () => {
   let mountedCreateGateways: ReactWrapper | ShallowWrapper;
 
-  beforeAll(() => {
+  beforeEach(() => {
     mountedCreateGateways = shallow(<CreateGateways />);
   });
 

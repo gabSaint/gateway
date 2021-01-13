@@ -5,12 +5,12 @@ import UpdateGateways from "../update";
 import { useParams } from "react-router-dom";
 
 describe("UpdateGateways", () => {
-  // @ts-ignore
-  useParams.mockImplementationOnce(() => ({ id: "1" }));
-
   let mountedUpdateGateways: ShallowWrapper | ReactWrapper;
 
-  beforeAll(() => {
+  beforeEach(() => {
+    // @ts-ignore
+    useParams.mockImplementationOnce(() => ({ id: "1" }));
+
     mountedUpdateGateways = shallow(<UpdateGateways />);
   });
 

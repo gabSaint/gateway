@@ -36,7 +36,7 @@ describe("FormContent", () => {
   let mountedGatewayFormContent: ReactWrapper | ShallowWrapper;
   let props: FormikState<Gateway>;
 
-  beforeAll(() => {
+  beforeEach(() => {
     props = {
       errors: { serial: "error", name: "error", address: "error" },
       touched: { serial: true, name: true, address: true },
@@ -86,41 +86,41 @@ describe("FormContent", () => {
     });
 
     it("shows error when wrong name", () => {
-      const serial = mountedGatewayFormContent.find(
+      const name = mountedGatewayFormContent.find(
         "[data-test='show-name-error']"
       );
-      expect(serial).toHaveLength(1);
+      expect(name).toHaveLength(1);
     });
 
     it("shows error when wrong address", () => {
-      const serial = mountedGatewayFormContent.find(
+      const address = mountedGatewayFormContent.find(
         "[data-test='show-address-error']"
       );
-      expect(serial).toHaveLength(1);
+      expect(address).toHaveLength(1);
     });
 
-    describe("Validate Function", () => {
+    describe("Function Validate", () => {
       let correctGateway: any;
       let wrongGateway: any;
 
-      beforeAll(() => {
+      beforeEach(() => {
         correctGateway = validate(
           new Gateway(1, "12345", "gate1", "127.0.0.1")
         );
         wrongGateway = validate(new Gateway(2, "", "", "127.1"));
       });
 
-      it("validate correctly the serial input", () => {
+      it("validates correctly the serial input", () => {
         expect(correctGateway.serial).toBeUndefined();
         expect(wrongGateway.serial).toBeDefined();
       });
 
-      it("validate correctly the name input", () => {
+      it("validates correctly the name input", () => {
         expect(correctGateway.name).toBeUndefined();
         expect(wrongGateway.name).toBeDefined();
       });
 
-      it("validate correctly the address input", () => {
+      it("validates correctly the address input", () => {
         expect(correctGateway.address).toBeUndefined();
         expect(wrongGateway.address).toBeDefined();
       });

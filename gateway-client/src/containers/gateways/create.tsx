@@ -7,11 +7,7 @@ function CreateGateway() {
     console.log("Gateway created", gateway);
   };
 
-  return (
-    <React.Fragment>
-      <GatewayForm gateway={{} as Gateway} handleSubmit={handleSubmit} />
-    </React.Fragment>
-  );
+  return <GatewayForm gateway={{} as Gateway} handleSubmit={handleSubmit} />;
 }
 
 export default CreateGateway;

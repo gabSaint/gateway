@@ -12,15 +12,9 @@ function GatewayForm(props: Props) {
   const { gateway, handleSubmit } = props;
 
   return (
-    <React.Fragment>
-      <Formik
-        initialValues={gateway}
-        onSubmit={handleSubmit}
-        validate={validate}
-      >
-        {(formikProps) => <FormContent {...formikProps} />}
-      </Formik>
-    </React.Fragment>
+    <Formik initialValues={gateway} onSubmit={handleSubmit} validate={validate}>
+      {(formikProps) => <FormContent {...formikProps} />}
+    </Formik>
   );
 }
 
