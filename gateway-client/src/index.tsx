@@ -1,12 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import Routes from "routes";
 import "./index.css";
-import ListGateways from "./containers/gateways/list";
-import ShowGateway from "./containers/gateways/show";
 
 ReactDOM.render(
   <React.StrictMode>
-    <ListGateways />
+    <Routes />
   </React.StrictMode>,
   document.getElementById("root")
 );

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 import Table from "../../components/table";
 import Gateway from "../../models/gateway";
@@ -23,7 +24,9 @@ function ListGateways() {
             <td>{gate.name}</td>
             <td>{gate.address}</td>
             <td>
-              <button className="button-view">view</button>
+              <Link to="">
+                <button className="button-view">view</button>
+              </Link>
               <button className="button-edit">edit</button>
             </td>
           </tr>

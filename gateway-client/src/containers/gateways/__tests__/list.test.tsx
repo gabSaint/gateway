@@ -2,7 +2,6 @@ import React from "react";
 import { ReactWrapper, shallow, ShallowWrapper } from "enzyme";
 
 import ListGateways from "../list";
-import Gateway from "../../../models/gateway";
 
 describe("ListGateways", () => {
   let mountedListGateways: ShallowWrapper | ReactWrapper;
@@ -16,7 +15,6 @@ describe("ListGateways", () => {
       const title = mountedListGateways.find("h4");
       expect(title).toHaveLength(1);
     });
-
     it("renders create new gateway button", () => {
       const newgatewaybuttons = mountedListGateways.find("#button-new-gateway");
       expect(newgatewaybuttons).toHaveLength(1);
@@ -29,7 +27,6 @@ describe("ListGateways", () => {
       const tables = mountedListGateways.find("Table");
       expect(tables).toHaveLength(1);
     });
-
     it("renders 5 td foreach tr in body", () => {
       const tablebodyrows = mountedListGateways.find("tbody>tr");
       const tablebodycolumns = mountedListGateways.find("tbody>tr>td");
