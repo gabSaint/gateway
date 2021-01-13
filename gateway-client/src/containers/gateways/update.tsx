@@ -1,20 +1,35 @@
+import Gateway from "models/gateway";
 import React from "react";
+import { useParams } from "react-router-dom";
+import GatewayForm from "./form";
+
+interface Params {
+  id: string;
+}
 
 function UpdateGateway() {
-  function handleRemove(id: number) {
+  const { id } = useParams<Params>();
+
+  function handleRemove() {
     // const newList = gateways.filter((item) => item.id != id);
     // setGateways(newList);
   }
+
+  const handleSubmit = () => {};
 
   return (
     <React.Fragment>
       <button
         type="button"
         data-test="form-button-delete"
-        onClick={() => handleRemove(1)}
+        onClick={handleRemove}
       >
         Delete
       </button>
+      <GatewayForm
+        gateway={new Gateway(JSON.parse(id), "", "", "")}
+        handleSubmit={handleSubmit}
+      />
     </React.Fragment>
   );
 }
