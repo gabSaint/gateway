@@ -3,11 +3,15 @@ import { ReactWrapper, shallow, ShallowWrapper } from "enzyme";
 
 import ListPeripherals, { Props as PeriferalProps } from "../list";
 import Peripheral, { Status } from "../../../models/peripheral";
+import { useParams } from "react-router-dom";
 
 describe("ListPeripherals", () => {
   let mountedListPeripherals: ShallowWrapper | ReactWrapper;
 
   beforeEach(() => {
+    // @ts-ignore
+    useParams.mockImplementationOnce(() => ({ id: "1", gateway_id: "1" }));
+
     mountedListPeripherals = shallow(<ListPeripherals peripherals={[]} />);
   });
 
@@ -53,6 +57,9 @@ describe("When a peripheral is passed to the component", () => {
   let props: PeriferalProps;
 
   beforeEach(() => {
+    // @ts-ignore
+    useParams.mockImplementationOnce(() => ({ id: "1", gateway_id: "1" }));
+
     props = {
       peripherals: [new Peripheral(1, "ASF", "21/23/24", Status.online)],
     };
@@ -63,9 +70,9 @@ describe("When a peripheral is passed to the component", () => {
     const tablerowscolumns = mountedListPeripherals.find("tr>td");
     expect(tablerowscolumns).toHaveLength(props.peripherals.length * 5);
 
-    const attr = ["1", "ASF", "21/23/24", "0", "editdelette"];
-    tablerowscolumns.forEach((td: any, i: number) => {
-      expect(td.text()).toBe(attr[i]);
+    const attr = ["1", "ASF", "21/23/24", "0"];
+    attr.forEach((at: string, i: number) => {
+      expect(tablerowscolumns.at(i).text()).toBe(at);
     });
   });
 });
