@@ -1,16 +1,39 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import axios from "axios";
 
 import Gateway from "../../models/gateway";
 import Peripheral from "../../models/peripheral";
 import ListPeripherals from "../peripherals/list";
 
+export const getGateway = async (id: number) => {
+  const response = await axios.get(`/gateways/${id}`);
+
+  if (response.status === 200) {
+    return response.data;
+  }
+  return {} as Gateway;
+};
+
+export const getGatewayPeripherals = async (id: number) => {
+  const response = await axios.get(`/gateways/${id}/peripherals`);
+
+  if (response.status === 200) {
+    return response.data;
+  }
+  return [];
+};
+
 function ShowGateway() {
-  const gateway = new Gateway(1, "1234oi78", "gate1", "127.0.0.1");
-  const peripherals = [
-    new Peripheral(1, "ASF", "21/23/24", "online", 1),
-    new Peripheral(2, "ASFX", "21/23/24", "offline", 2),
-  ];
+  const [gateway, setGateway] = useState({} as Gateway);
+  const [peripherals, setPeripherals] = useState<Peripheral[]>([]);
+
+  const { id } = useParams<any>();
+
+  useEffect(() => {
+    getGateway(id).then((data) => setGateway(data));
+    getGatewayPeripherals(id).then((data) => setPeripherals(data));
+  }, [id]);
 
   return (
     <React.Fragment>
