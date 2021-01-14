@@ -21,13 +21,16 @@ function UpdateGateway() {
 
   return (
     <React.Fragment>
-      <button
-        type="button"
-        data-test="form-button-delete"
-        onClick={handleRemove}
-      >
-        Delete
-      </button>
+      <div className="contain-row">
+        <h2>Edit Gateway</h2>
+        <button
+          type="button"
+          data-test="form-button-delete"
+          onClick={handleRemove}
+        >
+          Delete
+        </button>
+      </div>
       <GatewayForm
         gateway={new Gateway(JSON.parse(id), "", "", "")}
         handleSubmit={handleSubmit}

@@ -18,13 +18,16 @@ function UpdatePeripheral() {
 
   return (
     <React.Fragment>
-      <button
-        className="button-delete"
-        data-test="form-button-delete"
-        onClick={handleRemove}
-      >
-        Delete Peripheral
-      </button>
+      <div className="contain-row">
+        <h2>Edit Peripheral</h2>
+        <button
+          className="button-delete"
+          data-test="form-button-delete"
+          onClick={handleRemove}
+        >
+          Delete
+        </button>
+      </div>
       <PeripheralForm
         peripheral={{} as Peripheral}
         handleSubmit={handleSubmit}
