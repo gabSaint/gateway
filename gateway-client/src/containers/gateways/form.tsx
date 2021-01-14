@@ -29,7 +29,7 @@ export function FormContent({
     <Form className="ui form">
       <FormInput
         name="serial"
-        field="Serial Number"
+        label="Serial Number"
         error={errors.serial}
         touched={touched.serial}
         value={values.serial}
@@ -38,7 +38,7 @@ export function FormContent({
 
       <FormInput
         name="name"
-        field="Name"
+        label="Name"
         error={errors.name}
         touched={touched.name}
         value={values.name}
@@ -47,7 +47,7 @@ export function FormContent({
 
       <FormInput
         name="address"
-        field="IPv4 Address"
+        label="IPv4 Address"
         error={errors.address}
         touched={touched.address}
         value={values.address}

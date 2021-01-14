@@ -3,6 +3,8 @@ import { Formik, Field, Form, FormikState } from "formik";
 import Peripheral from "models/peripheral";
 import { Link } from "react-router-dom";
 import FormInput from "components/formInput";
+import FormRadio from "components/formradio";
+import RadioInput from "components/radioInput";
 
 export interface Props {
   peripheral: Peripheral;
@@ -33,7 +35,7 @@ export function FormContent({
     <Form className="ui form">
       <FormInput
         name="uid"
-        field="UID"
+        label="UID"
         error={errors.uid}
         touched={touched.uid}
         value={values.uid}
@@ -42,22 +44,17 @@ export function FormContent({
 
       <FormInput
         name="vendor"
-        field="Vendor"
+        label="Vendor"
         error={errors.vendor}
         touched={touched.vendor}
         value={values.vendor}
         submitCount={submitCount}
       />
 
-      <FormInput
-        name="status"
-        field="Status"
-        error={errors.status}
-        touched={touched.status}
-        value={values.status}
-        submitCount={submitCount}
-        type={"checkbox"}
-      />
+      <FormRadio label="Status">
+        <RadioInput label="Offline" value="offline" name="status" />
+        <RadioInput label="Online" value="online" name="status" />
+      </FormRadio>
 
       <button type="submit" data-test="button-submit">
         Submit

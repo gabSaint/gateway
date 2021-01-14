@@ -48,9 +48,9 @@ describe("When a header is passed to the component", () => {
   });
 });
 
-describe("When a children is passed to the component", () => {
+describe("When children is passed to the component", () => {
   let wrapperTable: ReactWrapper | ShallowWrapper;
-  let props;
+  let props: any;
 
   beforeEach(() => {
     props = {

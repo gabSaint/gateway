@@ -68,11 +68,16 @@ describe("FormContent", () => {
       expect(inputVendors).toHaveLength(1);
     });
 
-    it("renders status input", () => {
+    it("renders status FormRadio", () => {
       const inputStatus = wrapperPeripheralFormContent.find(
-        "FormInput[name='status']"
+        "FormRadio[label='Status']"
       );
       expect(inputStatus).toHaveLength(1);
+    });
+
+    it("renders 2 RadioInput", () => {
+      const inputRadios = wrapperPeripheralFormContent.find("RadioInput");
+      expect(inputRadios).toHaveLength(2);
     });
   });
 
