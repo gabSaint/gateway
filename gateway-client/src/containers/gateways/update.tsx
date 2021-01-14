@@ -27,6 +27,7 @@ function UpdateGateway() {
           type="button"
           data-test="form-button-delete"
           onClick={handleRemove}
+          className="negative"
         >
           Delete
         </button>

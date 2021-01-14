@@ -21,7 +21,7 @@ function UpdatePeripheral() {
       <div className="contain-row">
         <h2>Edit Peripheral</h2>
         <button
-          className="button-delete"
+          className="negative"
           data-test="form-button-delete"
           onClick={handleRemove}
         >

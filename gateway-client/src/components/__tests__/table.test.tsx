@@ -1,5 +1,5 @@
-import { ReactWrapper, shallow, ShallowWrapper } from "enzyme";
 import React from "react";
+import { ReactWrapper, shallow, ShallowWrapper } from "enzyme";
 
 import Table, { Header, Props as TableProps } from "../table";
 
