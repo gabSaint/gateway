@@ -14,4 +14,9 @@ describe("CreateGateways", () => {
     const form = mountedCreateGateways.find("GatewayForm");
     expect(form).toHaveLength(1);
   });
+
+  it("renders title", () => {
+    const title = mountedCreateGateways.find("h2");
+    expect(title).toHaveLength(1);
+  });
 });

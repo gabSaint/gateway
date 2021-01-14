@@ -8,10 +8,13 @@ function CreatePeripheral() {
   };
 
   return (
-    <PeripheralForm
-      peripheral={{} as Peripheral}
-      handleSubmit={handleSubmit}
-    ></PeripheralForm>
+    <React.Fragment>
+      <h2>Create Peripheral</h2>
+      <PeripheralForm
+        peripheral={{} as Peripheral}
+        handleSubmit={handleSubmit}
+      ></PeripheralForm>
+    </React.Fragment>
   );
 }
 

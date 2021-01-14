@@ -13,4 +13,9 @@ describe("CreatePeripheral", () => {
     const form = mountedCreatePeripheral.find("PeripheralForm");
     expect(form).toHaveLength(1);
   });
+
+  it("renders title", () => {
+    const title = mountedCreatePeripheral.find("h2");
+    expect(title).toHaveLength(1);
+  });
 });
