@@ -12,17 +12,14 @@ function ListGateways() {
 
   return (
     <React.Fragment>
-      {/* <h4></h4> */}
-      <Link to="/gateways/create">
-        <button id="button-new-gateway">Add gateway</button>
-      </Link>
+      <h2>Gateways</h2>
       <Table
         headers={[
-          new Header("Gateways"),
+          new Header("Id"),
           new Header("Serial number"),
           new Header("Name"),
           new Header("Ipv4 Address"),
-          new Header("Operations", "right aligned"),
+          new Header("Operations"),
         ]}
       >
         {gateways.map((gate, k) => (
@@ -31,7 +28,7 @@ function ListGateways() {
             <td>{gate.serial}</td>
             <td>{gate.name}</td>
             <td>{gate.address}</td>
-            <td className="right aligned">
+            <td>
               <Link to={`/gateways/${gate.id}`}>
                 <button className="button-view">details</button>
               </Link>
@@ -42,6 +39,9 @@ function ListGateways() {
           </tr>
         ))}
       </Table>
+      <Link to="/gateways/create">
+        <button id="button-new-gateway">New Gateway</button>
+      </Link>
     </React.Fragment>
   );
 }
