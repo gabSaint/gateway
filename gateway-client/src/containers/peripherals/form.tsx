@@ -2,6 +2,7 @@ import React from "react";
 import { Formik, Field, Form, FormikState } from "formik";
 import Peripheral from "models/peripheral";
 import { Link } from "react-router-dom";
+import FormInput from "components/formInput";
 
 export interface Props {
   peripheral: Peripheral;
@@ -26,32 +27,36 @@ export function FormContent({
   errors,
   touched,
   values,
+  submitCount,
 }: FormikState<Peripheral>) {
   return (
     <Form className="ui form">
-      <div className="field">
-        <label htmlFor="input-uid">UID</label>
-        <Field id="input-uid" name="uid" value={values.uid || ""} />
-      </div>
-      {errors.uid && touched.uid && (
-        <div data-test="show-uid-error">{errors.uid}</div>
-      )}
+      <FormInput
+        name="uid"
+        field="UID"
+        error={errors.uid}
+        touched={touched.uid}
+        value={values.uid}
+        submitCount={submitCount}
+      />
 
-      <div className="field">
-        <label htmlFor="input-vendor">Vendor</label>
-        <Field id="input-vendor" name="vendor" value={values.vendor || ""} />
-      </div>
-      {errors.vendor && touched.vendor && (
-        <div data-test="show-vendor-error">{errors.vendor}</div>
-      )}
+      <FormInput
+        name="vendor"
+        field="Vendor"
+        error={errors.vendor}
+        touched={touched.vendor}
+        value={values.vendor}
+        submitCount={submitCount}
+      />
 
-      <div className="field">
-        <label htmlFor="input-status">Status</label>
-        <Field id="input-status" name="status" value={values.status || ""} />
-      </div>
-      {errors.status && touched.status && (
-        <div data-test="show-status-error">{errors.status}</div>
-      )}
+      <FormInput
+        name="status"
+        field="Status"
+        error={errors.status}
+        touched={touched.status}
+        value={values.status}
+        submitCount={submitCount}
+      />
 
       <button type="submit" data-test="button-submit">
         Submit
@@ -70,7 +75,7 @@ export const validate = (values: Peripheral) => {
   const errors: any = {};
 
   if (!values.uid) {
-    errors.uid = "Uid is required";
+    errors.uid = "UID is required";
   }
 
   if (!values.vendor) {

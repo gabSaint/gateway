@@ -60,71 +60,50 @@ describe("FormContent", () => {
       expect(buttoncancel).toHaveLength(1);
     });
 
-    it("renders serial number input", () => {
+    it("renders serial number FormInput", () => {
       const inputserialnumbers = mountedGatewayFormContent.find(
-        "#input-serial"
+        "FormInput[name='serial']"
       );
       expect(inputserialnumbers).toHaveLength(1);
     });
 
-    it("renders name input", () => {
-      const inputnames = mountedGatewayFormContent.find("#input-name");
+    it("renders name FormInput", () => {
+      const inputnames = mountedGatewayFormContent.find(
+        "FormInput[name='name']"
+      );
       expect(inputnames).toHaveLength(1);
     });
 
-    it("renders address input", () => {
-      const inputaddress = mountedGatewayFormContent.find("#input-address");
+    it("renders address FormInput", () => {
+      const inputaddress = mountedGatewayFormContent.find(
+        "FormInput[name='address']"
+      );
       expect(inputaddress).toHaveLength(1);
     });
   });
 
-  describe("Behaviour", () => {
-    it("shows error when wrong serial", () => {
-      const serial = mountedGatewayFormContent.find(
-        "[data-test='show-serial-error']"
-      );
-      expect(serial).toHaveLength(1);
+  describe("Function Validate", () => {
+    let correctGateway: any;
+    let wrongGateway: any;
+
+    beforeEach(() => {
+      correctGateway = validate(new Gateway(1, "12345", "gate1", "127.0.0.1"));
+      wrongGateway = validate(new Gateway(2, "", "", "127.1"));
     });
 
-    it("shows error when wrong name", () => {
-      const name = mountedGatewayFormContent.find(
-        "[data-test='show-name-error']"
-      );
-      expect(name).toHaveLength(1);
+    it("validates correctly the serial input", () => {
+      expect(correctGateway.serial).toBeUndefined();
+      expect(wrongGateway.serial).toBeDefined();
     });
 
-    it("shows error when wrong address", () => {
-      const address = mountedGatewayFormContent.find(
-        "[data-test='show-address-error']"
-      );
-      expect(address).toHaveLength(1);
+    it("validates correctly the name input", () => {
+      expect(correctGateway.name).toBeUndefined();
+      expect(wrongGateway.name).toBeDefined();
     });
 
-    describe("Function Validate", () => {
-      let correctGateway: any;
-      let wrongGateway: any;
-
-      beforeEach(() => {
-        correctGateway = validate(
-          new Gateway(1, "12345", "gate1", "127.0.0.1")
-        );
-        wrongGateway = validate(new Gateway(2, "", "", "127.1"));
-      });
-
-      it("validates correctly the serial input", () => {
-        expect(correctGateway.serial).toBeUndefined();
-        expect(wrongGateway.serial).toBeDefined();
-      });
-
-      it("validates correctly the name input", () => {
-        expect(correctGateway.name).toBeUndefined();
-        expect(wrongGateway.name).toBeDefined();
-      });
-
-      it("validates correctly the address input", () => {
-        expect(correctGateway.address).toBeUndefined();
-        expect(wrongGateway.address).toBeDefined();
-      });
+    it("validates correctly the address input", () => {
+      expect(correctGateway.address).toBeUndefined();
+      expect(wrongGateway.address).toBeDefined();
     });
   });
 });

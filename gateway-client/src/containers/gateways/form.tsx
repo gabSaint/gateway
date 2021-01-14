@@ -2,6 +2,7 @@ import React from "react";
 import { Formik, Field, Form, FormikState } from "formik";
 import Gateway from "../../models/gateway";
 import { Link } from "react-router-dom";
+import FormInput from "components/formInput";
 
 export interface Props {
   gateway: Gateway;
@@ -18,32 +19,40 @@ function GatewayForm(props: Props) {
   );
 }
 
-export function FormContent({ errors, touched, values }: FormikState<Gateway>) {
+export function FormContent({
+  errors,
+  touched,
+  values,
+  submitCount,
+}: FormikState<Gateway>) {
   return (
     <Form className="ui form">
-      <div className="field">
-        <label htmlFor="input-serial">Serial Number</label>
-        <Field id="input-serial" name="serial" value={values.serial || ""} />
-      </div>
-      {errors.serial && touched.serial && (
-        <div data-test="show-serial-error">{errors.serial}</div>
-      )}
+      <FormInput
+        name="serial"
+        field="Serial Number"
+        error={errors.serial}
+        touched={touched.serial}
+        value={values.serial}
+        submitCount={submitCount}
+      />
 
-      <div className="field">
-        <label htmlFor="input-name">Name</label>
-        <Field id="input-name" name="name" value={values.name || ""} />
-      </div>
-      {errors.name && touched.name && (
-        <div data-test="show-name-error">{errors.name}</div>
-      )}
+      <FormInput
+        name="name"
+        field="Name"
+        error={errors.name}
+        touched={touched.name}
+        value={values.name}
+        submitCount={submitCount}
+      />
 
-      <div className="field">
-        <label htmlFor="input-address">IPv4 Address</label>
-        <Field id="input-address" name="address" value={values.address || ""} />
-      </div>
-      {errors.address && touched.address && (
-        <div data-test="show-address-error">{errors.address}</div>
-      )}
+      <FormInput
+        name="address"
+        field="IPv4 Address"
+        error={errors.address}
+        touched={touched.address}
+        value={values.address}
+        submitCount={submitCount}
+      />
 
       <button type="submit">Submit</button>
 
@@ -62,7 +71,7 @@ export const validate = (values: Gateway) => {
   }
 
   if (!values.serial) {
-    errors.serial = "Serial Number is requiered";
+    errors.serial = "Serial number is requiered";
   }
 
   if (!values.address) {

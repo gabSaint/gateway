@@ -3,7 +3,6 @@ import classNames from "classnames";
 import { Field, FormikErrors, FormikState } from "formik";
 
 export interface Props {
-  id: string;
   name: string;
   field: string;
   error: string | undefined;
@@ -13,7 +12,7 @@ export interface Props {
 }
 
 function FormInput(props: Props) {
-  const { id, error, touched, value, submitCount, field, name } = props;
+  const { error, touched, value, submitCount, field, name } = props;
 
   return (
     <React.Fragment>
@@ -22,8 +21,8 @@ function FormInput(props: Props) {
           error: error && (touched || submitCount),
         })}
       >
-        <label htmlFor={id}>{field}</label>
-        <Field id={id} name={name} value={value || ""} />
+        <label htmlFor={"input-" + name}>{field}</label>
+        <Field id={"input-" + name} name={name} value={value || ""} />
       </div>
       {error && (touched || submitCount) && (
         <div data-test={"show" + name + "error"} className="error-message">

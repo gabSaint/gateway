@@ -27,7 +27,6 @@ describe("Form Input", () => {
 
     beforeEach(() => {
       const wrongInput = {
-        id: "",
         name: "",
         field: "",
         error: "error",
@@ -36,7 +35,6 @@ describe("Form Input", () => {
         submitCount: 2,
       };
       const correctInput = {
-        id: "",
         name: "",
         field: "",
         error: "",

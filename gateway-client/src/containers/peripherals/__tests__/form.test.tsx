@@ -54,69 +54,52 @@ describe("FormContent", () => {
       expect(buttoncancel).toHaveLength(1);
     });
 
-    it("renders uid input", () => {
-      const inputUid = mountedPeripheralFormContent.find("#input-uid");
-      expect(inputUid).toHaveLength(1);
+    it("renders uid FormInput", () => {
+      const inputuid = mountedPeripheralFormContent.find(
+        "FormInput[name='uid']"
+      );
+      expect(inputuid).toHaveLength(1);
     });
 
-    it("renders vendor input", () => {
-      const inputvendors = mountedPeripheralFormContent.find("#input-vendor");
+    it("renders vendor FormInput", () => {
+      const inputvendors = mountedPeripheralFormContent.find(
+        "FormInput[name='vendor']"
+      );
       expect(inputvendors).toHaveLength(1);
     });
 
     it("renders status input", () => {
-      const inputstatus = mountedPeripheralFormContent.find("#input-status");
+      const inputstatus = mountedPeripheralFormContent.find(
+        "FormInput[name='status']"
+      );
       expect(inputstatus).toHaveLength(1);
     });
   });
 
-  describe("Behaviour", () => {
-    it("shows error when wrong uid", () => {
-      const uid = mountedPeripheralFormContent.find(
-        "[data-test='show-uid-error']"
+  describe("Function Validate", () => {
+    let correctPeripheral: any;
+    let wrongPeripheral: any;
+
+    beforeEach(() => {
+      correctPeripheral = validate(
+        new Peripheral(1234, "AID", "24/1/2020", "online", 1)
       );
-      expect(uid).toHaveLength(1);
+      wrongPeripheral = validate({} as Peripheral);
     });
 
-    it("shows error when wrong vendor", () => {
-      const vendor = mountedPeripheralFormContent.find(
-        "[data-test='show-vendor-error']"
-      );
-      expect(vendor).toHaveLength(1);
+    it("validates correctly the uid input", () => {
+      expect(correctPeripheral.uid).toBeUndefined();
+      expect(wrongPeripheral.uid).toBeDefined();
     });
 
-    it("shows error when wrong status", () => {
-      const status = mountedPeripheralFormContent.find(
-        "[data-test='show-status-error']"
-      );
-      expect(status).toHaveLength(1);
+    it("validates correctly the vendor input", () => {
+      expect(correctPeripheral.vendor).toBeUndefined();
+      expect(wrongPeripheral.vendor).toBeDefined();
     });
 
-    describe("Function Validate", () => {
-      let correctPeripheral: any;
-      let wrongPeripheral: any;
-
-      beforeEach(() => {
-        correctPeripheral = validate(
-          new Peripheral(1234, "AID", "24/1/2020", "online", 1)
-        );
-        wrongPeripheral = validate({} as Peripheral);
-      });
-
-      it("validates correctly the uid input", () => {
-        expect(correctPeripheral.uid).toBeUndefined();
-        expect(wrongPeripheral.uid).toBeDefined();
-      });
-
-      it("validates correctly the vendor input", () => {
-        expect(correctPeripheral.vendor).toBeUndefined();
-        expect(wrongPeripheral.vendor).toBeDefined();
-      });
-
-      it("validates correctly the status input", () => {
-        expect(correctPeripheral.status).toBeUndefined();
-        expect(wrongPeripheral.status).toBeDefined();
-      });
+    it("validates correctly the status input", () => {
+      expect(correctPeripheral.status).toBeUndefined();
+      expect(wrongPeripheral.status).toBeDefined();
     });
   });
 });
