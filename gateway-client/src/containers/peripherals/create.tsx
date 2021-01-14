@@ -11,7 +11,9 @@ function CreatePeripheral() {
     <React.Fragment>
       <h2>Create Peripheral</h2>
       <PeripheralForm
-        peripheral={{} as Peripheral}
+        peripheral={
+          { status: "online", date: new Date().toString() } as Peripheral
+        }
         handleSubmit={handleSubmit}
       ></PeripheralForm>
     </React.Fragment>

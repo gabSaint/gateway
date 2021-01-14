@@ -52,8 +52,8 @@ export function FormContent({
       />
 
       <FormRadio label="Status">
-        <RadioInput label="Offline" value="offline" name="status" />
         <RadioInput label="Online" value="online" name="status" />
+        <RadioInput label="Offline" value="offline" name="status" />
       </FormRadio>
 
       <button type="submit" data-test="button-submit">

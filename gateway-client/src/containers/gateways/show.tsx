@@ -14,7 +14,9 @@ function ShowGateway() {
 
   return (
     <React.Fragment>
-      <h2>{gateway.name}</h2>
+      <h2>
+        <Link to="/">Gateways</Link> - {gateway.name}
+      </h2>
       <ListPeripherals peripherals={peripherals} />
       <Link to={`/gateways/${gateway.id}/peripherals/create`}>
         <button data-test="button-add-peripheral">Add peripheral</button>
