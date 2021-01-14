@@ -56,6 +56,7 @@ export function FormContent({
         touched={touched.status}
         value={values.status}
         submitCount={submitCount}
+        type={"checkbox"}
       />
 
       <button type="submit" data-test="button-submit">
