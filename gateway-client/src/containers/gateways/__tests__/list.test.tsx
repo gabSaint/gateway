@@ -11,10 +11,11 @@ describe("ListGateways", () => {
   });
 
   describe("Header", () => {
-    it("renders title", () => {
-      const title = mountedListGateways.find("h4");
-      expect(title).toHaveLength(1);
-    });
+    // it("renders title", () => {
+    //   const title = mountedListGateways.find("h4");
+    //   expect(title).toHaveLength(1);
+    // });
+
     it("renders create new gateway button", () => {
       const newgatewaybuttons = mountedListGateways.find("#button-new-gateway");
       expect(newgatewaybuttons).toHaveLength(1);

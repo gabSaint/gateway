@@ -1,7 +1,7 @@
 import { ReactWrapper, shallow, ShallowWrapper } from "enzyme";
 import React from "react";
 
-import Table, { Props as TableProps } from "../table";
+import Table, { Header, Props as TableProps } from "../table";
 
 describe("Table", () => {
   let mountedTable: ReactWrapper | ShallowWrapper;
@@ -32,7 +32,7 @@ describe("When a header is passed to the component", () => {
 
   beforeEach(() => {
     props = {
-      headers: ["name", "age"],
+      headers: [new Header("name"), new Header("age")],
     };
     mountedTable = shallow(<Table {...props} />);
   });
@@ -40,8 +40,10 @@ describe("When a header is passed to the component", () => {
   it("displays table headers correctly", () => {
     const tableheaders = mountedTable.find("th");
     expect(tableheaders).toHaveLength(props.headers.length);
+
     tableheaders.forEach((th: any) => {
-      expect(props.headers).toContain(th.text());
+      const headers = props.headers.map((h) => h.title);
+      expect(headers).toContain(th.text());
     });
   });
 });

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-import Table from "../../components/table";
+import Table, { Header } from "../../components/table";
 import Gateway from "../../models/gateway";
 
 function ListGateways() {
@@ -12,12 +12,18 @@ function ListGateways() {
 
   return (
     <React.Fragment>
-      <h4>Gateways</h4>
+      {/* <h4></h4> */}
       <Link to="/gateways/create">
         <button id="button-new-gateway">Add gateway</button>
       </Link>
       <Table
-        headers={["Id", "Serial number", "Name", "Ipv4 Address", "Operations"]}
+        headers={[
+          new Header("Gateways"),
+          new Header("Serial number"),
+          new Header("Name"),
+          new Header("Ipv4 Address"),
+          new Header("Operations", "right aligned"),
+        ]}
       >
         {gateways.map((gate, k) => (
           <tr key={k}>
@@ -25,7 +31,7 @@ function ListGateways() {
             <td>{gate.serial}</td>
             <td>{gate.name}</td>
             <td>{gate.address}</td>
-            <td>
+            <td className="right aligned">
               <Link to={`/gateways/${gate.id}`}>
                 <button className="button-view">view</button>
               </Link>

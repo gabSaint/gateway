@@ -1,16 +1,22 @@
 import React, { FunctionComponent } from "react";
 
+export class Header {
+  constructor(public title: string, public align?: string) {}
+}
+
 export interface Props {
-  headers: string[];
+  headers: Header[];
 }
 
 const Table: FunctionComponent<Props> = (props) => {
   return (
-    <table>
+    <table className="ui definition table">
       <thead>
         <tr>
-          {props.headers.map((column, k) => (
-            <th key={k}>{column}</th>
+          {props.headers.map((header, k) => (
+            <th key={k} className={header.align}>
+              {header.title}
+            </th>
           ))}
         </tr>
       </thead>
