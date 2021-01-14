@@ -31,3 +31,14 @@ button {
   text-align: right;
   color: #692726;
 }
+
+.radio-item {
+  margin-right: 5px;
+  padding-top: 2px;
+}
+
+.ui.radio.align {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
