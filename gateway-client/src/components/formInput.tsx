@@ -18,13 +18,13 @@ function FormInput(props: Props) {
     <React.Fragment>
       <div
         className={classNames("field", {
-          error: error && (touched || submitCount),
+          error: error && (touched || submitCount > 0),
         })}
       >
         <label htmlFor={"input-" + name}>{field}</label>
         <Field id={"input-" + name} name={name} value={value || ""} />
       </div>
-      {error && (touched || submitCount) && (
+      {error && (touched || submitCount > 0) && (
         <div data-test={"show" + name + "error"} className="error-message">
           {error} *
         </div>
