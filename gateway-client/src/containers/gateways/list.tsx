@@ -33,7 +33,7 @@ function ListGateways() {
             <td>{gate.address}</td>
             <td className="right aligned">
               <Link to={`/gateways/${gate.id}`}>
-                <button className="button-view">view</button>
+                <button className="button-view">details</button>
               </Link>
               <Link to={`/gateways/${gate.id}/edit`}>
                 <button className="button-edit">edit</button>

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 import Gateway from "../../models/gateway";
 import Peripheral from "../../models/peripheral";
 import ListPeripherals from "../peripherals/list";
@@ -13,9 +14,7 @@ function ShowGateway() {
 
   return (
     <React.Fragment>
-      <h4>
-        {gateway.name} - {gateway.serial} - {gateway.address}
-      </h4>
+      <h2>{gateway.name}</h2>
       <ListPeripherals peripherals={peripherals} />
       <Link to={`/gateways/${gateway.id}/peripherals/create`}>
         <button id="button-add-peripheral">Add peripheral</button>

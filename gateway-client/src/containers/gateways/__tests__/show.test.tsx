@@ -12,7 +12,7 @@ describe("ShowGateway", () => {
 
   describe("Header & Footer", () => {
     it("renders title", () => {
-      const title = mountedShowGateway.find("h4");
+      const title = mountedShowGateway.find("h2");
       expect(title).toHaveLength(1);
     });
 
