@@ -21,3 +21,8 @@ code {
 button {
   @extend .ui.button;
 }
+
+.contain-row {
+  display: flex;
+  justify-content: space-between;
+}

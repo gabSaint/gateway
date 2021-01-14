@@ -28,21 +28,27 @@ export function FormContent({
   values,
 }: FormikState<Peripheral>) {
   return (
-    <Form>
-      <label htmlFor="input-uid">UID</label>
-      <Field id="input-uid" name="uid" value={values.uid || ""} />
+    <Form className="ui form">
+      <div className="field">
+        <label htmlFor="input-uid">UID</label>
+        <Field id="input-uid" name="uid" value={values.uid || ""} />
+      </div>
       {errors.uid && touched.uid && (
         <div data-test="show-uid-error">{errors.uid}</div>
       )}
 
-      <label htmlFor="input-vendor">Vendor</label>
-      <Field id="input-vendor" name="vendor" value={values.vendor || ""} />
+      <div className="field">
+        <label htmlFor="input-vendor">Vendor</label>
+        <Field id="input-vendor" name="vendor" value={values.vendor || ""} />
+      </div>
       {errors.vendor && touched.vendor && (
         <div data-test="show-vendor-error">{errors.vendor}</div>
       )}
 
-      <label htmlFor="input-status">Status</label>
-      <Field id="input-status" name="status" value={values.status || ""} />
+      <div className="field">
+        <label htmlFor="input-status">Status</label>
+        <Field id="input-status" name="status" value={values.status || ""} />
+      </div>
       {errors.status && touched.status && (
         <div data-test="show-status-error">{errors.status}</div>
       )}

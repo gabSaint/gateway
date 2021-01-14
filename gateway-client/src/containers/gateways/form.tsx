@@ -20,21 +20,27 @@ function GatewayForm(props: Props) {
 
 export function FormContent({ errors, touched, values }: FormikState<Gateway>) {
   return (
-    <Form>
-      <label htmlFor="input-serial">Serial Number</label>
-      <Field id="input-serial" name="serial" value={values.serial || ""} />
+    <Form className="ui form">
+      <div className="field">
+        <label htmlFor="input-serial">Serial Number</label>
+        <Field id="input-serial" name="serial" value={values.serial || ""} />
+      </div>
       {errors.serial && touched.serial && (
         <div data-test="show-serial-error">{errors.serial}</div>
       )}
 
-      <label htmlFor="input-name">Name</label>
-      <Field id="input-name" name="name" value={values.name || ""} />
+      <div className="field">
+        <label htmlFor="input-name">Name</label>
+        <Field id="input-name" name="name" value={values.name || ""} />
+      </div>
       {errors.name && touched.name && (
         <div data-test="show-name-error">{errors.name}</div>
       )}
 
-      <label htmlFor="input-address">IPv4 Address</label>
-      <Field id="input-address" name="address" value={values.address || ""} />
+      <div className="field">
+        <label htmlFor="input-address">IPv4 Address</label>
+        <Field id="input-address" name="address" value={values.address || ""} />
+      </div>
       {errors.address && touched.address && (
         <div data-test="show-address-error">{errors.address}</div>
       )}
