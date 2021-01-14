@@ -21,7 +21,7 @@ describe("Table", () => {
   });
 
   it("renders a table body element", () => {
-    const tablebodies = mountedTable.find("thead");
+    const tablebodies = mountedTable.find("tbody");
     expect(tablebodies).toHaveLength(1);
   });
 });
