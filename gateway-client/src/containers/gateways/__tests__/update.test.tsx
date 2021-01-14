@@ -5,24 +5,24 @@ import { useParams } from "react-router-dom";
 import UpdateGateways from "../update";
 
 describe("UpdateGateways", () => {
-  let mountedUpdateGateways: ShallowWrapper | ReactWrapper;
+  let wrapperUpdateGateways: ShallowWrapper | ReactWrapper;
 
   beforeEach(() => {
     // @ts-ignore
     useParams.mockImplementationOnce(() => ({ id: "1" }));
 
-    mountedUpdateGateways = shallow(<UpdateGateways />);
+    wrapperUpdateGateways = shallow(<UpdateGateways />);
   });
 
   it("renders delete button", () => {
-    const deletebuttons = mountedUpdateGateways.find(
+    const deleteButtons = wrapperUpdateGateways.find(
       "[data-test='form-button-delete']"
     );
-    expect(deletebuttons).toHaveLength(1);
+    expect(deleteButtons).toHaveLength(1);
   });
 
   it("renders gateway form", () => {
-    const form = mountedUpdateGateways.find("GatewayForm");
+    const form = wrapperUpdateGateways.find("GatewayForm");
     expect(form).toHaveLength(1);
   });
 });

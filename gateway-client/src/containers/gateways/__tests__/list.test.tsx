@@ -4,34 +4,36 @@ import { ReactWrapper, shallow, ShallowWrapper } from "enzyme";
 import ListGateways from "../list";
 
 describe("ListGateways", () => {
-  let mountedListGateways: ShallowWrapper | ReactWrapper;
+  let wrapperListGateways: ShallowWrapper | ReactWrapper;
 
   beforeEach(() => {
-    mountedListGateways = shallow(<ListGateways />);
+    wrapperListGateways = shallow(<ListGateways />);
   });
 
   describe("Header", () => {
     it("renders title", () => {
-      const title = mountedListGateways.find("h2");
+      const title = wrapperListGateways.find("h2");
       expect(title).toHaveLength(1);
     });
 
     it("renders create new gateway button", () => {
-      const newgatewaybuttons = mountedListGateways.find("#button-new-gateway");
-      expect(newgatewaybuttons).toHaveLength(1);
-      expect(newgatewaybuttons.text()).toBe("Add gateway");
+      const newGatewayButton = wrapperListGateways.find(
+        "[data-test='button-new-gateway']"
+      );
+      expect(newGatewayButton).toHaveLength(1);
     });
   });
 
   describe("Table", () => {
     it("renders Table", () => {
-      const tables = mountedListGateways.find("Table");
-      expect(tables).toHaveLength(1);
+      const table = wrapperListGateways.find("Table");
+      expect(table).toHaveLength(1);
     });
+
     it("renders 5 td foreach tr in body", () => {
-      const tablebodyrows = mountedListGateways.find("tbody>tr");
-      const tablebodycolumns = mountedListGateways.find("tbody>tr>td");
-      expect(tablebodycolumns.length).toBe(5 * tablebodyrows.length);
+      const tableBodyRows = wrapperListGateways.find("tbody>tr");
+      const tableBodyColumns = wrapperListGateways.find("tbody>tr>td");
+      expect(tableBodyColumns.length).toBe(5 * tableBodyRows.length);
     });
   });
 
@@ -39,17 +41,17 @@ describe("ListGateways", () => {
     let tablebodyLastcolumns;
 
     beforeEach(() => {
-      tablebodyLastcolumns = mountedListGateways.find("td:last-child");
+      tablebodyLastcolumns = wrapperListGateways.find("td:last-child");
     });
 
     it("renders view buttons for each gateway", () => {
-      const viewbuttons = mountedListGateways.find("button.button-view");
-      expect(viewbuttons).toHaveLength(tablebodyLastcolumns.length);
+      const viewButtons = wrapperListGateways.find("[data-test='button-view']");
+      expect(viewButtons).toHaveLength(tablebodyLastcolumns.length);
     });
 
     it("renders edit buttons for each gateway", () => {
-      const editbuttons = mountedListGateways.find("button.button-edit");
-      expect(editbuttons).toHaveLength(tablebodyLastcolumns.length);
+      const editButtons = wrapperListGateways.find("[data-test='button-edit']");
+      expect(editButtons).toHaveLength(tablebodyLastcolumns.length);
     });
   });
 });

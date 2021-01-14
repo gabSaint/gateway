@@ -10,7 +10,7 @@ import { FormikState } from "formik";
 import Gateway from "models/gateway";
 
 describe("FormGateways", () => {
-  let mountedGatewayForm: ReactWrapper | ShallowWrapper;
+  let wrapperGatewayForm: ReactWrapper | ShallowWrapper;
   let props: FormGatewaysProps;
 
   beforeEach(() => {
@@ -23,17 +23,17 @@ describe("FormGateways", () => {
       },
       handleSubmit: jest.fn(),
     };
-    mountedGatewayForm = shallow(<Form {...props} />);
+    wrapperGatewayForm = shallow(<Form {...props} />);
   });
 
   it("renders form", () => {
-    const formik = mountedGatewayForm.find("Formik");
+    const formik = wrapperGatewayForm.find("Formik");
     expect(formik).toHaveLength(1);
   });
 });
 
 describe("FormContent", () => {
-  let mountedGatewayFormContent: ReactWrapper | ShallowWrapper;
+  let wrapperGatewayFormContent: ReactWrapper | ShallowWrapper;
   let props: FormikState<Gateway>;
 
   beforeEach(() => {
@@ -42,43 +42,43 @@ describe("FormContent", () => {
       touched: { serial: true, name: true, address: true },
       values: { id: 1, name: "gate1", serial: "123", address: "127.0.0.1" },
     } as FormikState<Gateway>;
-    mountedGatewayFormContent = shallow(<FormContent {...props} />);
+    wrapperGatewayFormContent = shallow(<FormContent {...props} />);
   });
 
   describe("Form", () => {
     it("renders submit button", () => {
-      const buttonsubmit = mountedGatewayFormContent.find(
+      const buttonSubmit = wrapperGatewayFormContent.find(
         "button[type='submit']"
       );
-      expect(buttonsubmit).toHaveLength(1);
+      expect(buttonSubmit).toHaveLength(1);
     });
 
     it("renders cancel button", () => {
-      const buttoncancel = mountedGatewayFormContent.find(
+      const buttonCancel = wrapperGatewayFormContent.find(
         "button[type='button']"
       );
-      expect(buttoncancel).toHaveLength(1);
+      expect(buttonCancel).toHaveLength(1);
     });
 
     it("renders serial number FormInput", () => {
-      const inputserialnumbers = mountedGatewayFormContent.find(
+      const inputSerial = wrapperGatewayFormContent.find(
         "FormInput[name='serial']"
       );
-      expect(inputserialnumbers).toHaveLength(1);
+      expect(inputSerial).toHaveLength(1);
     });
 
     it("renders name FormInput", () => {
-      const inputnames = mountedGatewayFormContent.find(
+      const inputName = wrapperGatewayFormContent.find(
         "FormInput[name='name']"
       );
-      expect(inputnames).toHaveLength(1);
+      expect(inputName).toHaveLength(1);
     });
 
     it("renders address FormInput", () => {
-      const inputaddress = mountedGatewayFormContent.find(
+      const inputAddress = wrapperGatewayFormContent.find(
         "FormInput[name='address']"
       );
-      expect(inputaddress).toHaveLength(1);
+      expect(inputAddress).toHaveLength(1);
     });
   });
 

@@ -20,9 +20,9 @@ describe("UpdatePeripheral", () => {
   });
 
   it("renders delete button", () => {
-    const deletebuttons = mountedUpdatePeripheral.find(
+    const deleteButton = mountedUpdatePeripheral.find(
       "[data-test='form-button-delete']"
     );
-    expect(deletebuttons).toHaveLength(1);
+    expect(deleteButton).toHaveLength(1);
   });
 });

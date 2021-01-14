@@ -9,7 +9,7 @@ import Peripheral from "models/peripheral";
 import { FormikState } from "formik";
 
 describe("PeripheralForm", () => {
-  let mountedPeripheralForm: ShallowWrapper | ReactWrapper;
+  let wrapperPeripheralForm: ShallowWrapper | ReactWrapper;
   let props: PeripheralProps;
 
   beforeEach(() => {
@@ -17,17 +17,17 @@ describe("PeripheralForm", () => {
       peripheral: {} as Peripheral,
       handleSubmit: jest.fn(),
     };
-    mountedPeripheralForm = shallow(<PeripheralForm {...props} />);
+    wrapperPeripheralForm = shallow(<PeripheralForm {...props} />);
   });
 
   it("renders form Formik", () => {
-    const formik = mountedPeripheralForm.find("Formik");
+    const formik = wrapperPeripheralForm.find("Formik");
     expect(formik).toHaveLength(1);
   });
 });
 
 describe("FormContent", () => {
-  let mountedPeripheralFormContent: ReactWrapper | ShallowWrapper;
+  let wrapperPeripheralFormContent: ReactWrapper | ShallowWrapper;
   let props: FormikState<Peripheral>;
 
   beforeEach(() => {
@@ -36,43 +36,43 @@ describe("FormContent", () => {
       touched: { uid: true, vendor: true, status: true },
       values: { uid: 123, vendor: "ATS", status: "online" },
     } as FormikState<Peripheral>;
-    mountedPeripheralFormContent = shallow(<FormContent {...props} />);
+    wrapperPeripheralFormContent = shallow(<FormContent {...props} />);
   });
 
   describe("Form", () => {
     it("renders submit button", () => {
-      const buttonsubmit = mountedPeripheralFormContent.find(
+      const buttonSubmit = wrapperPeripheralFormContent.find(
         "[data-test='button-submit']"
       );
-      expect(buttonsubmit).toHaveLength(1);
+      expect(buttonSubmit).toHaveLength(1);
     });
 
     it("renders cancel button", () => {
-      const buttoncancel = mountedPeripheralFormContent.find(
+      const buttoncancel = wrapperPeripheralFormContent.find(
         "[data-test='button-cancel']"
       );
       expect(buttoncancel).toHaveLength(1);
     });
 
     it("renders uid FormInput", () => {
-      const inputuid = mountedPeripheralFormContent.find(
+      const inputUid = wrapperPeripheralFormContent.find(
         "FormInput[name='uid']"
       );
-      expect(inputuid).toHaveLength(1);
+      expect(inputUid).toHaveLength(1);
     });
 
     it("renders vendor FormInput", () => {
-      const inputvendors = mountedPeripheralFormContent.find(
+      const inputVendors = wrapperPeripheralFormContent.find(
         "FormInput[name='vendor']"
       );
-      expect(inputvendors).toHaveLength(1);
+      expect(inputVendors).toHaveLength(1);
     });
 
     it("renders status input", () => {
-      const inputstatus = mountedPeripheralFormContent.find(
+      const inputStatus = wrapperPeripheralFormContent.find(
         "FormInput[name='status']"
       );
-      expect(inputstatus).toHaveLength(1);
+      expect(inputStatus).toHaveLength(1);
     });
   });
 

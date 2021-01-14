@@ -4,31 +4,30 @@ import { ReactWrapper, shallow, ShallowWrapper } from "enzyme";
 import ShowGateway from "../show";
 
 describe("ShowGateway", () => {
-  let mountedShowGateway: ShallowWrapper | ReactWrapper;
+  let wrapperShowGateway: ShallowWrapper | ReactWrapper;
 
   beforeEach(() => {
-    mountedShowGateway = shallow(<ShowGateway />);
+    wrapperShowGateway = shallow(<ShowGateway />);
   });
 
   describe("Header & Footer", () => {
     it("renders title", () => {
-      const title = mountedShowGateway.find("h2");
+      const title = wrapperShowGateway.find("h2");
       expect(title).toHaveLength(1);
     });
 
     it("renders create new peripheral button", () => {
-      const newperipheralbuttons = mountedShowGateway.find(
-        "button#button-add-peripheral"
+      const newPeripheralButton = wrapperShowGateway.find(
+        "[data-test='button-add-peripheral']"
       );
-      expect(newperipheralbuttons).toHaveLength(1);
-      expect(newperipheralbuttons.text()).toBe("Add peripheral");
+      expect(newPeripheralButton).toHaveLength(1);
     });
   });
 
   describe("List Peripherals", () => {
     it("renders a list of Peripherals", () => {
-      const listperipherals = mountedShowGateway.find("ListPeripherals");
-      expect(listperipherals).toHaveLength(1);
+      const listPeripherals = wrapperShowGateway.find("ListPeripherals");
+      expect(listPeripherals).toHaveLength(1);
     });
   });
 });

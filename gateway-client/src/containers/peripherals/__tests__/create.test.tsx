@@ -3,19 +3,19 @@ import { ReactWrapper, shallow, ShallowWrapper } from "enzyme";
 import CreatePeripheral from "../create";
 
 describe("CreatePeripheral", () => {
-  let mountedCreatePeripheral: ReactWrapper | ShallowWrapper;
+  let wrapperCreatePeripheral: ReactWrapper | ShallowWrapper;
 
   beforeEach(() => {
-    mountedCreatePeripheral = shallow(<CreatePeripheral />);
+    wrapperCreatePeripheral = shallow(<CreatePeripheral />);
   });
 
   it("renders form", () => {
-    const form = mountedCreatePeripheral.find("PeripheralForm");
+    const form = wrapperCreatePeripheral.find("PeripheralForm");
     expect(form).toHaveLength(1);
   });
 
   it("renders title", () => {
-    const title = mountedCreatePeripheral.find("h2");
+    const title = wrapperCreatePeripheral.find("h2");
     expect(title).toHaveLength(1);
   });
 });

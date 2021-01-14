@@ -4,44 +4,44 @@ import { ReactWrapper, shallow, ShallowWrapper } from "enzyme";
 import Table, { Header, Props as TableProps } from "../table";
 
 describe("Table", () => {
-  let mountedTable: ReactWrapper | ShallowWrapper;
+  let wrapperTable: ReactWrapper | ShallowWrapper;
 
   beforeEach(() => {
-    mountedTable = shallow(<Table headers={[]} />);
+    wrapperTable = shallow(<Table headers={[]} />);
   });
 
   it("renders a table element", () => {
-    const tables = mountedTable.find("table");
+    const tables = wrapperTable.find("table");
     expect(tables).toHaveLength(1);
   });
 
   it("renders a table head element", () => {
-    const tableheaders = mountedTable.find("thead");
-    expect(tableheaders).toHaveLength(1);
+    const tableHeaders = wrapperTable.find("thead");
+    expect(tableHeaders).toHaveLength(1);
   });
 
   it("renders a table body element", () => {
-    const tablebodies = mountedTable.find("tbody");
-    expect(tablebodies).toHaveLength(1);
+    const tableBodies = wrapperTable.find("tbody");
+    expect(tableBodies).toHaveLength(1);
   });
 });
 
 describe("When a header is passed to the component", () => {
-  let mountedTable: ReactWrapper | ShallowWrapper;
+  let wrapperTable: ReactWrapper | ShallowWrapper;
   let props: TableProps;
 
   beforeEach(() => {
     props = {
       headers: [new Header("name"), new Header("age")],
     };
-    mountedTable = shallow(<Table {...props} />);
+    wrapperTable = shallow(<Table {...props} />);
   });
 
   it("displays table headers correctly", () => {
-    const tableheaders = mountedTable.find("th");
-    expect(tableheaders).toHaveLength(props.headers.length);
+    const tableHeaders = wrapperTable.find("th");
+    expect(tableHeaders).toHaveLength(props.headers.length);
 
-    tableheaders.forEach((th: any) => {
+    tableHeaders.forEach((th: any) => {
       const headers = props.headers.map((h) => h.title);
       expect(headers).toContain(th.text());
     });
@@ -49,7 +49,7 @@ describe("When a header is passed to the component", () => {
 });
 
 describe("When a children is passed to the component", () => {
-  let mountedTable: ReactWrapper | ShallowWrapper;
+  let wrapperTable: ReactWrapper | ShallowWrapper;
   let props;
 
   beforeEach(() => {
@@ -57,11 +57,11 @@ describe("When a children is passed to the component", () => {
       headers: [],
       children: <p id="test-table-body-child"></p>,
     };
-    mountedTable = shallow(<Table {...props} />);
+    wrapperTable = shallow(<Table {...props} />);
   });
 
-  it("display children inside table body", () => {
-    const tablebodychild = mountedTable.find("tbody>p#test-table-body-child");
-    expect(tablebodychild).toHaveLength(1);
+  it("displays children inside table body", () => {
+    const tableBodyChild = wrapperTable.find("tbody>p#test-table-body-child");
+    expect(tableBodyChild).toHaveLength(1);
   });
 });
