@@ -118,12 +118,12 @@ describe("Gateways axios calls", () => {
     });
 
     it("calls axios with correct url", async () => {
-      await Gateway.update(data, 1);
+      await Gateway.update(1, data);
       expect(axios.put).toHaveBeenCalledWith("/gateways/1", data);
     });
 
     it("returns data on correct status code", async () => {
-      const response = await Gateway.update(data, 1);
+      const response = await Gateway.update(1, data);
 
       expect(axios.put).toHaveBeenCalled();
       expect(response).toEqual(data);

@@ -1,10 +1,20 @@
 import React from "react";
+import { useHistory } from "__mocks__/react-router-dom";
+import { useParams } from "react-router-dom";
+
 import PeripheralForm from "./form";
 import Peripheral from "models/peripheral";
 
 function CreatePeripheral() {
-  const handleSubmit = (peripheral: Peripheral) => {
-    console.log("Peripheral created", peripheral);
+  const { id } = useParams<any>();
+  const history = useHistory();
+
+  const handleSubmit = async (peripheral: Peripheral) => {
+    const data = await Peripheral.create(id, peripheral);
+
+    if (data) {
+      history.push("/gateways/:id");
+    }
   };
 
   return (

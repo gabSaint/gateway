@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import axios from "axios";
 
 import Gateway from "models/gateway";
 import GatewayForm from "./form";
@@ -24,7 +23,7 @@ function UpdateGateway() {
   }, []);
 
   const handleSubmit = useCallback(async (gatway: Gateway) => {
-    const data = await Gateway.update(gateway || ({} as Gateway), id);
+    const data = await Gateway.update(id, gateway || ({} as Gateway));
 
     if (data) {
       history.push("/gateways");
@@ -36,7 +35,6 @@ function UpdateGateway() {
       <div className="contain-row">
         <h2>Edit Gateway</h2>
         <button
-          type="button"
           data-test="form-button-delete"
           onClick={handleRemove}
           className="negative"

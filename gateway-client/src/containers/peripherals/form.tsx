@@ -1,5 +1,5 @@
 import React from "react";
-import { Formik, Field, Form, FormikState } from "formik";
+import { Formik, Form, FormikState } from "formik";
 import Peripheral from "models/peripheral";
 import { Link } from "react-router-dom";
 import FormInput from "components/formInput";

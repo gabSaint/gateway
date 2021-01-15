@@ -18,8 +18,8 @@ export default class Peripheral {
     return [];
   };
 
-  static getById = async (gate_id: number, id: number) => {
-    const response = await axios.get(`/gateways/${gate_id}/peripherals/${id}`);
+  static getById = async (id: number) => {
+    const response = await axios.get(`/peripherals/${id}`);
 
     if (response.status === 200) {
       return response.data;
@@ -35,21 +35,16 @@ export default class Peripheral {
     }
   };
 
-  static update = async (gate_id: number, id: number, data: Peripheral) => {
-    const response = await axios.put(
-      `/gateways/${gate_id}/peripherals/${id}`,
-      data
-    );
+  static update = async (id: number, data: Peripheral) => {
+    const response = await axios.put(`/peripherals/${id}`, data);
 
     if (response.status === 200) {
       return response.data;
     }
   };
 
-  static delete = async (gate_id: number, id: number) => {
-    const response = await axios.delete(
-      `/gateways/${gate_id}/peripherals/${id}`
-    );
+  static delete = async (id: number) => {
+    const response = await axios.delete(`/peripherals/${id}`);
 
     if (response.status === 200) {
       return response.data;

@@ -43,7 +43,7 @@ export default class Gateway {
     }
   };
 
-  static update = async (data: Gateway, id: number) => {
+  static update = async (id: number, data: Gateway) => {
     const response = await axios.put(`/gateways/${id}`, data);
 
     if (response.status === 200) {

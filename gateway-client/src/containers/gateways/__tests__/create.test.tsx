@@ -10,13 +10,13 @@ describe("CreateGateways", () => {
     wrapperCreateGateways = shallow(<CreateGateways />);
   });
 
-  it("renders form", () => {
-    const form = wrapperCreateGateways.find("GatewayForm");
-    expect(form).toHaveLength(1);
-  });
-
   it("renders title", () => {
     const title = wrapperCreateGateways.find("h2");
     expect(title).toHaveLength(1);
+  });
+
+  it("renders form", () => {
+    const form = wrapperCreateGateways.find("GatewayForm");
+    expect(form).toHaveLength(1);
   });
 });

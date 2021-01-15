@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 
 import Gateway from "../../models/gateway";
 import GatewayForm from "./form";
