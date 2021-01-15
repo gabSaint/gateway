@@ -1,22 +1,28 @@
 import React from "react";
 import { ReactWrapper, shallow, ShallowWrapper } from "enzyme";
+import renderer from "react-test-renderer";
 
-import CreateGateways from "../create";
+import CreateGateway from "../create";
 
 describe("CreateGateways", () => {
-  let wrapperCreateGateways: ReactWrapper | ShallowWrapper;
+  let wrapperCreateGateway: ReactWrapper | ShallowWrapper;
 
   beforeEach(() => {
-    wrapperCreateGateways = shallow(<CreateGateways />);
+    wrapperCreateGateway = shallow(<CreateGateway />);
+  });
+
+  it("renders correctly", () => {
+    const tree = renderer.create(<CreateGateway />).toJSON();
+    expect(tree).toMatchSnapshot();
   });
 
   it("renders title", () => {
-    const title = wrapperCreateGateways.find("h2");
+    const title = wrapperCreateGateway.find("h2");
     expect(title).toHaveLength(1);
   });
 
   it("renders form", () => {
-    const form = wrapperCreateGateways.find("GatewayForm");
+    const form = wrapperCreateGateway.find("GatewayForm");
     expect(form).toHaveLength(1);
   });
 });

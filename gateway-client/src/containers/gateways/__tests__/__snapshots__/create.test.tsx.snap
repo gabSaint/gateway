@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreateGateways renders correctly 1`] = `
+Array [
+  <h2>
+    New Gateway
+  </h2>,
+  <form
+    action="#"
+    className="ui form"
+    onReset={[Function]}
+    onSubmit={[Function]}
+  >
+    <div
+      className="field"
+    >
+      <label
+        htmlFor="input-serial"
+      >
+        Serial Number
+      </label>
+      <input
+        id="input-serial"
+        name="serial"
+        onBlur={[Function]}
+        onChange={[Function]}
+        value=""
+      />
+    </div>
+    <div
+      className="field"
+    >
+      <label
+        htmlFor="input-name"
+      >
+        Name
+      </label>
+      <input
+        id="input-name"
+        name="name"
+        onBlur={[Function]}
+        onChange={[Function]}
+        value=""
+      />
+    </div>
+    <div
+      className="field"
+    >
+      <label
+        htmlFor="input-address"
+      >
+        IPv4 Address
+      </label>
+      <input
+        id="input-address"
+        name="address"
+        onBlur={[Function]}
+        onChange={[Function]}
+        value=""
+      />
+    </div>
+    <button
+      type="submit"
+    >
+      Submit
+    </button>
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Cancel
+    </button>
+  </form>,
+]
+`;
