@@ -1,6 +1,7 @@
 import React from "react";
 import { ReactWrapper, shallow, ShallowWrapper } from "enzyme";
-import { useParams } from "__mocks__/react-router-dom";
+import renderer from "react-test-renderer";
+import { useParams } from "react-router-dom";
 
 import ShowGateway from "../show";
 
@@ -8,9 +9,18 @@ describe("ShowGateway", () => {
   let wrapperShowGateway: ShallowWrapper | ReactWrapper;
 
   beforeEach(() => {
+    // @ts-ignore
     useParams.mockImplementationOnce(() => ({ id: "1" }));
 
     wrapperShowGateway = shallow(<ShowGateway />);
+  });
+
+  it("renders correctly", () => {
+    // @ts-ignore
+    useParams.mockImplementationOnce(() => ({ id: "1" }));
+
+    const tree = renderer.create(<ShowGateway />).toJSON();
+    expect(tree).toMatchSnapshot();
   });
 
   describe("Header & Footer", () => {

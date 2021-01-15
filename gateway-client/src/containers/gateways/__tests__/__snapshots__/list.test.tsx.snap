@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListGateways renders correctly 1`] = `
+Array [
+  <h2>
+    Gateways
+  </h2>,
+  <table
+    className="ui definition table"
+  >
+    <thead>
+      <tr>
+        <th>
+          Id
+        </th>
+        <th>
+          Serial number
+        </th>
+        <th>
+          Name
+        </th>
+        <th>
+          Ipv4 address
+        </th>
+        <th>
+          Operations
+        </th>
+      </tr>
+    </thead>
+    <tbody />
+  </table>,
+  <div>
+    <button
+      data-test="button-new-gateway"
+    >
+      New Gateway
+    </button>
+  </div>,
+]
+`;

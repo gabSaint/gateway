@@ -1,5 +1,6 @@
 import React from "react";
 import { ReactWrapper, shallow, ShallowWrapper } from "enzyme";
+import renderer from "react-test-renderer";
 
 import Form, {
   FormContent,
@@ -24,6 +25,11 @@ describe("FormGateways", () => {
       handleSubmit: jest.fn(),
     };
     wrapperGatewayForm = shallow(<Form {...props} />);
+  });
+
+  it("renders correctly", () => {
+    const tree = renderer.create(<Form {...props} />).toJSON();
+    expect(tree).toMatchSnapshot();
   });
 
   it("renders form", () => {

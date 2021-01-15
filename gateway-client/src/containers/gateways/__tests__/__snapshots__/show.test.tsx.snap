@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ShowGateway renders correctly 1`] = `
+Array [
+  <h2>
+    <div>
+      Gateways
+    </div>
+     - 
+  </h2>,
+  <div>
+    <button
+      data-test="button-add-peripheral"
+    >
+      Add peripheral
+    </button>
+  </div>,
+]
+`;

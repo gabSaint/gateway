@@ -1,5 +1,6 @@
 import React from "react";
 import { ReactWrapper, shallow, ShallowWrapper } from "enzyme";
+import renderer from "react-test-renderer";
 
 import ListGateways from "../list";
 
@@ -8,6 +9,11 @@ describe("ListGateways", () => {
 
   beforeEach(() => {
     wrapperListGateways = shallow(<ListGateways />);
+  });
+
+  it("renders correctly", () => {
+    const tree = renderer.create(<ListGateways />).toJSON();
+    expect(tree).toMatchSnapshot();
   });
 
   describe("Header", () => {

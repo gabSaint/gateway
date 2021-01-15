@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UpdateGateways renders correctly 1`] = `
+<div
+  className="contain-row"
+>
+  <h2>
+    Edit Gateway
+  </h2>
+  <button
+    className="negative"
+    data-test="form-button-delete"
+    onClick={[Function]}
+  >
+    Delete
+  </button>
+</div>
+`;

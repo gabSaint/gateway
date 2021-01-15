@@ -1,6 +1,7 @@
 import React from "react";
 import { ReactWrapper, shallow, ShallowWrapper } from "enzyme";
-import { useParams } from "__mocks__/react-router-dom";
+import renderer from "react-test-renderer";
+import { useParams } from "react-router-dom";
 
 import UpdateGateways from "../update";
 
@@ -8,9 +9,18 @@ describe("UpdateGateways", () => {
   let wrapperUpdateGateways: ShallowWrapper | ReactWrapper;
 
   beforeEach(() => {
+    // @ts-ignore
     useParams.mockImplementationOnce(() => ({ id: "1" }));
 
     wrapperUpdateGateways = shallow(<UpdateGateways />);
+  });
+
+  it("renders correctly", () => {
+    // @ts-ignore
+    useParams.mockImplementationOnce(() => ({ id: "1" }));
+
+    const tree = renderer.create(<UpdateGateways />).toJSON();
+    expect(tree).toMatchSnapshot();
   });
 
   it("renders delete button", () => {
