@@ -1,24 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 
 import Table, { Header } from "../../components/table";
 import Gateway from "../../models/gateway";
-
-export const getGateways = async () => {
-  const response = await axios.get(`/gateways`);
-
-  if (response.status === 200) {
-    return response.data;
-  }
-  return [];
-};
 
 function ListGateways() {
   const [gateways, setGateways] = useState<Gateway[]>([]);
 
   useEffect(() => {
-    getGateways().then((data) => setGateways(data));
+    Gateway.getAll().then((data) => setGateways(data));
   }, []);
 
   return (

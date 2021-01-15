@@ -1,9 +1,7 @@
 import React from "react";
 import { ReactWrapper, shallow, ShallowWrapper } from "enzyme";
 
-import ListGateways, { getGateways } from "../list";
-import Gateway from "models/gateway";
-import axios from "__mocks__/axios";
+import ListGateways from "../list";
 
 describe("ListGateways", () => {
   let wrapperListGateways: ShallowWrapper | ReactWrapper;
@@ -55,28 +53,5 @@ describe("ListGateways", () => {
       const editButtons = wrapperListGateways.find("[data-test='button-edit']");
       expect(editButtons).toHaveLength(tablebodyLastcolumns.length);
     });
-  });
-});
-
-describe("getGateways", () => {
-  let data: Gateway[];
-
-  beforeEach(() => {
-    data = [new Gateway(1, "testSerial", "testName", "127.0.0.1")];
-    axios.get.mockImplementationOnce(() =>
-      Promise.resolve({ status: 200, data })
-    );
-  });
-
-  it("calls axios with correct url", async () => {
-    await getGateways();
-    expect(axios.get).toHaveBeenCalledWith("/gateways");
-  });
-
-  it("returns data on correct status code", async () => {
-    const response = await getGateways();
-
-    expect(axios.get).toHaveBeenCalled();
-    expect(response).toEqual(data);
   });
 });

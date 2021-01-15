@@ -5,31 +5,6 @@ import axios from "axios";
 import Gateway from "models/gateway";
 import GatewayForm from "./form";
 
-export const getGateway = async (id: number) => {
-  const response = await axios.get(`/gateways/${id}`);
-
-  if (response.status === 200) {
-    return response.data;
-  }
-  return {} as Gateway;
-};
-
-export const putGateway = async (data: Gateway, id: number) => {
-  const response = await axios.put(`/gateways/${id}`, data);
-
-  if (response.status === 200) {
-    return response.data;
-  }
-};
-
-export const deleteGateway = async (id: number) => {
-  const response = await axios.delete(`/gateways/${id}`);
-
-  if (response.status === 200) {
-    return response.data;
-  }
-};
-
 function UpdateGateway() {
   const [gateway, setGateway] = useState<Gateway>();
 
@@ -37,19 +12,19 @@ function UpdateGateway() {
   const history = useHistory();
 
   useEffect(() => {
-    getGateway(id).then((data) => setGateway(data));
+    Gateway.getById(id).then((data) => setGateway(data));
   }, []);
 
   const handleRemove = useCallback(async () => {
-    const data = await deleteGateway(id);
+    const data = await Gateway.delete(id);
 
     if (data) {
       history.push("/gateways");
     }
   }, []);
 
-  const handleSubmit = useCallback(async (gateway: Gateway) => {
-    const data = await putGateway(gateway, id);
+  const handleSubmit = useCallback(async (gatway: Gateway) => {
+    const data = await Gateway.update(gateway || ({} as Gateway), id);
 
     if (data) {
       history.push("/gateways");

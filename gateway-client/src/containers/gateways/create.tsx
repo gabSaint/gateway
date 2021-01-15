@@ -5,19 +5,11 @@ import Gateway from "../../models/gateway";
 import GatewayForm from "./form";
 import { useHistory } from "react-router-dom";
 
-export const postGateway = async (data: Gateway) => {
-  const response = await axios.post(`/gateways`, data);
-
-  if (response.status === 201) {
-    return response.data;
-  }
-};
-
 function CreateGateway() {
   const history = useHistory();
 
   const handleSubmit = async (gateway: Gateway) => {
-    const data = await postGateway(gateway);
+    const data = await Gateway.create(gateway);
 
     if (data) {
       history.push("/gateways");

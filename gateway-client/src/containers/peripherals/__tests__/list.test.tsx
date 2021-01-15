@@ -60,9 +60,9 @@ describe("When a peripheral is passed to the component", () => {
     const tableRowsColumns = wrapperListPeripherals.find("tr>td");
     expect(tableRowsColumns).toHaveLength(props.peripherals.length * 5);
 
-    const attr = ["1", "ASF", "21/23/24", "online"];
-    attr.forEach((at: string, i: number) => {
-      expect(tableRowsColumns.at(i).text()).toBe(at);
+    const attributes = ["1", "ASF", "21/23/24", "online"];
+    attributes.forEach((attr: string, i: number) => {
+      expect(tableRowsColumns.at(i).text()).toBe(attr);
     });
   });
 });
