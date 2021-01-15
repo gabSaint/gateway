@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Routes renders correctly 1`] = `
+<div>
+  <div
+    className="ui menu"
+  >
+    <div>
+      Home
+    </div>
+    <div>
+      Peripherals
+    </div>
+    <div
+      className="right item"
+    >
+      <div
+        className="ui icon input"
+      >
+        <input
+          placeholder="Search Gateway..."
+          type="text"
+        />
+        <i
+          className="search icon"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="ui container"
+    id="flex-container"
+  >
+    <div>
+      <div />
+      <div />
+      <div />
+      <div />
+      <div />
+      <div />
+      <div />
+      <div />
+    </div>
+  </div>
+</div>
+`;

@@ -7,36 +7,32 @@ import CreateGateway from "containers/gateways/create";
 import ListPeripherals from "containers/peripherals/list";
 import UpdatePeripheral from "containers/peripherals/update";
 import CreatePeripheral from "containers/peripherals/create";
-import Layout from "containers/layout";
-import FlexContainer from "containers/container";
-import InitialSegment from "components/segment";
+import Layout from "containers/layouts/layout";
 
 export default function Routes() {
   return (
     <Router>
       <Layout>
-        <FlexContainer>
-          <Switch>
-            <Route exact path="/" component={ListGateways} />
-            <Route
-              exact
-              path="/peripherals"
-              component={() => <ListPeripherals peripherals={[]} all />}
-            />
-            <Route
-              path="/gateways/:id/peripherals/create"
-              component={CreatePeripheral}
-            />
-            <Route
-              path="/gateways/:gateway_id/peripherals/:id/edit"
-              component={UpdatePeripheral}
-            />
-            <Route exact path="/gateways" component={ListGateways} />
-            <Route path="/gateways/create" component={CreateGateway} />
-            <Route path="/gateways/:id/edit" component={UpdateGateway} />
-            <Route path="/gateways/:id" component={ShowGateway} />
-          </Switch>
-        </FlexContainer>
+        <Switch>
+          <Route exact path="/" component={ListGateways} />
+          <Route
+            exact
+            path="/peripherals"
+            component={() => <ListPeripherals peripherals={[]} all />}
+          />
+          <Route
+            path="/gateways/:id/peripherals/create"
+            component={CreatePeripheral}
+          />
+          <Route
+            path="/gateways/:gateway_id/peripherals/:id/edit"
+            component={UpdatePeripheral}
+          />
+          <Route exact path="/gateways" component={ListGateways} />
+          <Route path="/gateways/create" component={CreateGateway} />
+          <Route path="/gateways/:id/edit" component={UpdateGateway} />
+          <Route path="/gateways/:id" component={ShowGateway} />
+        </Switch>
       </Layout>
     </Router>
   );

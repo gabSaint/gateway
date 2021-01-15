@@ -6,4 +6,13 @@ const useHistory = jest.fn();
 const Link: FunctionComponent = ({ children }) =>
   React.createElement("div", null, children);
 
-export { useParams, useHistory, Link };
+const BrowserRouter: FunctionComponent = ({ children }) =>
+  React.createElement("div", null, children);
+
+const Route: FunctionComponent = ({ children }) =>
+  React.createElement("div", null, children);
+
+const Switch: FunctionComponent = ({ children }) =>
+  React.createElement("div", null, children);
+
+export { useParams, useHistory, Link, BrowserRouter, Route, Switch };
