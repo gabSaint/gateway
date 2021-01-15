@@ -18,7 +18,7 @@ function UpdatePeripheral() {
     const data = await Peripheral.delete(id);
 
     if (data) {
-      history.push(`/gateways/${gateway_id}`);
+      history.goBack();
     }
   }, []);
 
@@ -26,7 +26,6 @@ function UpdatePeripheral() {
     const data = await Peripheral.update(id, peripheral || ({} as Peripheral));
 
     if (data) {
-      // history.push(`/gateways/${gateway_id}`);
       history.goBack();
     }
   }, []);

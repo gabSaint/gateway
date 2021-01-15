@@ -1,31 +1,48 @@
 import React from "react";
 import { ReactWrapper, shallow, ShallowWrapper } from "enzyme";
 
-import ListPeripherals, { Props as PeriferalProps } from "../list";
+import ListPeripherals, { Props as PeripheralProps } from "../list";
 import Peripheral from "../../../models/peripheral";
 
 describe("ListPeripherals", () => {
   let wrapperListPeripherals: ShallowWrapper | ReactWrapper;
+  let wrapperListGatewayPeripherals: ShallowWrapper | ReactWrapper;
+  let props: PeripheralProps;
 
   beforeEach(() => {
-    wrapperListPeripherals = shallow(<ListPeripherals peripherals={[]} />);
+    props = {
+      peripherals: [new Peripheral(1, "ASF", "21/23/24", "online", 1)],
+    };
+
+    wrapperListPeripherals = shallow(<ListPeripherals peripherals={[]} all />);
+    wrapperListGatewayPeripherals = shallow(<ListPeripherals {...props} />);
   });
 
   describe("Table", () => {
+    let renderAll;
+
     it("renders Table", () => {
       const table = wrapperListPeripherals.find("Table");
       expect(table).toHaveLength(1);
     });
 
     it("renders less than 11 table rows", () => {
-      const tableRows = wrapperListPeripherals.find("tr");
+      const tableRows = wrapperListGatewayPeripherals.find("tr");
       expect(tableRows.length).toBeLessThanOrEqual(11);
     });
 
-    it("renders 5 td foreach tr in body", () => {
+    it("renders 5 td foreach tr in body when showing peripheral", () => {
+      const tableBodyRows = wrapperListGatewayPeripherals.find("tbody>tr");
+      const tableBodyColumns = wrapperListGatewayPeripherals.find(
+        "tbody>tr>td"
+      );
+      expect(tableBodyColumns.length).toBe(5 * tableBodyRows.length);
+    });
+
+    it("renders 6 td foreach tr in body when showing all", () => {
       const tableBodyRows = wrapperListPeripherals.find("tbody>tr");
-      const tableBodycolumns = wrapperListPeripherals.find("tbody>tr>td");
-      expect(tableBodycolumns.length).toBe(5 * tableBodyRows.length);
+      const tableBodyColumns = wrapperListPeripherals.find("tbody>tr>td");
+      expect(tableBodyColumns.length).toBe(6 * tableBodyRows.length);
     });
   });
 
@@ -43,26 +60,17 @@ describe("ListPeripherals", () => {
       expect(editButtons).toHaveLength(tablebodyLastcolumns.length);
     });
   });
-});
 
-describe("When a peripheral is passed to the component", () => {
-  let wrapperListPeripherals: ReactWrapper | ShallowWrapper;
-  let props: PeriferalProps;
+  describe("When a peripheral is passed to the component", () => {
+    it("displays the peripheral in the table", () => {
+      const tableRowsColumns = wrapperListGatewayPeripherals.find(
+        "tbody>tr>td"
+      );
 
-  beforeEach(() => {
-    props = {
-      peripherals: [new Peripheral(1, "ASF", "21/23/24", "online", 1)],
-    };
-    wrapperListPeripherals = shallow(<ListPeripherals {...props} />);
-  });
-
-  it("displays the peripheral in the table", () => {
-    const tableRowsColumns = wrapperListPeripherals.find("tr>td");
-    expect(tableRowsColumns).toHaveLength(props.peripherals.length * 5);
-
-    const attributes = ["1", "ASF", "21/23/24", "online"];
-    attributes.forEach((attr: string, i: number) => {
-      expect(tableRowsColumns.at(i).text()).toBe(attr);
+      const attributes = ["1", "ASF", "21/23/24", "online"];
+      attributes.forEach((attr: string, i: number) => {
+        expect(tableRowsColumns.at(i).text()).toBe(attr);
+      });
     });
   });
 });
