@@ -32,9 +32,9 @@ describe("FormContent", () => {
 
   beforeEach(() => {
     props = {
-      errors: { uid: "error", vendor: "error", status: "error" },
-      touched: { uid: true, vendor: true, status: true },
-      values: { uid: 123, vendor: "ATS", status: "online" },
+      errors: { id: "error", vendor: "error", status: "error" },
+      touched: { id: true, vendor: true, status: true },
+      values: { id: 123, vendor: "ATS", status: "online" },
     } as FormikState<Peripheral>;
     wrapperPeripheralFormContent = shallow(<FormContent {...props} />);
   });
@@ -52,13 +52,6 @@ describe("FormContent", () => {
         "[data-test='button-cancel']"
       );
       expect(buttoncancel).toHaveLength(1);
-    });
-
-    it("renders uid FormInput", () => {
-      const inputUid = wrapperPeripheralFormContent.find(
-        "FormInput[name='uid']"
-      );
-      expect(inputUid).toHaveLength(1);
     });
 
     it("renders vendor FormInput", () => {
@@ -90,11 +83,6 @@ describe("FormContent", () => {
         new Peripheral(1234, "AID", "24/1/2020", "online", 1)
       );
       wrongPeripheral = validate({} as Peripheral);
-    });
-
-    it("validates correctly the uid input", () => {
-      expect(correctPeripheral.uid).toBeUndefined();
-      expect(wrongPeripheral.uid).toBeDefined();
     });
 
     it("validates correctly the vendor input", () => {

@@ -7,8 +7,8 @@ function Navbar() {
       <Link to="/" className="active item">
         Home
       </Link>
-      <Link to="/gateways" className="item">
-        Gateways
+      <Link to="/peripherals" className="item">
+        Peripherals
       </Link>
       <div className="right item">
         <div className="ui icon input">

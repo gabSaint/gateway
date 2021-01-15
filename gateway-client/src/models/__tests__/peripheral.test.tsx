@@ -4,6 +4,29 @@ import { useParams } from "__mocks__/react-router-dom";
 import Peripheral from "models/peripheral";
 
 describe("Peripheral axios calls", () => {
+  describe("getAll", () => {
+    let data: Peripheral[];
+
+    beforeEach(() => {
+      data = [new Peripheral(2, "AMS", new Date().toString(), "online", 1)];
+      axios.get.mockImplementationOnce(() =>
+        Promise.resolve({ status: 200, data })
+      );
+    });
+
+    it("calls axios with correct url", async () => {
+      await Peripheral.getAll();
+      expect(axios.get).toHaveBeenCalledWith("/peripherals");
+    });
+
+    it("returns data on correct status code", async () => {
+      const response = await Peripheral.getAll();
+
+      expect(axios.get).toHaveBeenCalled();
+      expect(response).toEqual(data);
+    });
+  });
+
   describe("getById", () => {
     let data: Peripheral;
 
@@ -103,26 +126,3 @@ describe("Peripheral axios calls", () => {
     });
   });
 });
-
-// describe("getAll", () => {
-//   let data: Gateway[];
-
-//   beforeEach(() => {
-//     data = [new Gateway(1, "testSerial", "testName", "127.0.0.1")];
-//     axios.get.mockImplementationOnce(() =>
-//       Promise.resolve({ status: 200, data })
-//     );
-//   });
-
-//   it("calls axios with correct url", async () => {
-//     await Gateway.getAll();
-//     expect(axios.get).toHaveBeenCalledWith("/gateways");
-//   });
-
-//   it("returns data on correct status code", async () => {
-//     const response = await Gateway.getAll();
-
-//     expect(axios.get).toHaveBeenCalled();
-//     expect(response).toEqual(data);
-//   });
-// });

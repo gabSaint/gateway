@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import Table, { Header } from "../../components/table";
@@ -9,7 +9,15 @@ export interface Props {
 }
 
 function ListPeripherals(props: Props) {
-  const { peripherals } = props;
+  const [peripherals, setPeripherals] = useState<Peripheral[]>(
+    props.peripherals
+  );
+
+  useEffect(() => {
+    if (props.peripherals.length == 0) {
+      Peripheral.getAll().then((data) => setPeripherals(data));
+    }
+  }, []);
 
   return (
     <Table
@@ -23,13 +31,13 @@ function ListPeripherals(props: Props) {
     >
       {peripherals.map((peripheral, k) => (
         <tr key={k}>
-          <td>{peripheral.uid}</td>
+          <td>{peripheral.id}</td>
           <td>{peripheral.vendor}</td>
           <td>{peripheral.date}</td>
           <td>{peripheral.status}</td>
           <td>
             <Link
-              to={`/gateways/${peripheral.gatewayId}/peripherals/${peripheral.uid}/edit`}
+              to={`/gateways/${peripheral.gatewayId}/peripherals/${peripheral.id}/edit`}
             >
               <button className="button-edit" data-test="form-button-edit">
                 edit

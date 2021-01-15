@@ -34,15 +34,6 @@ export function FormContent({
   return (
     <Form className="ui form">
       <FormInput
-        name="uid"
-        label="UID"
-        error={errors.uid}
-        touched={touched.uid}
-        value={values.uid}
-        submitCount={submitCount}
-      />
-
-      <FormInput
         name="vendor"
         label="Vendor"
         error={errors.vendor}
@@ -71,10 +62,6 @@ export function FormContent({
 
 export const validate = (values: Peripheral) => {
   const errors: any = {};
-
-  if (!values.uid) {
-    errors.uid = "UID is required";
-  }
 
   if (!values.vendor) {
     errors.vendor = "Vendor is requiered";
