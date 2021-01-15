@@ -14,7 +14,7 @@ function ListPeripherals(props: Props) {
   );
 
   useEffect(() => {
-    if (props.peripherals.length == 0) {
+    if (props.peripherals.length === 0) {
       Peripheral.getAll().then((data) => setPeripherals(data));
     }
   }, []);

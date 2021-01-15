@@ -22,8 +22,8 @@ function FormInput(props: Props) {
         })}
       >
         <label htmlFor={"input-" + name}>{label}</label>
-        {/* <Field id={"input-" + name} name={name} value={value || ""} /> */}
-        <Field id={"input-" + name} name={name} />
+        <Field id={"input-" + name} name={name} value={value || ""} />
+        {/* <Field id={"input-" + name} name={name} /> */}
       </div>
       {error && (touched || submitCount > 0) && (
         <div data-test={"show" + name + "error"} className="error-message">

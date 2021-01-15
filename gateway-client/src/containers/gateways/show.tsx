@@ -16,6 +16,8 @@ function ShowGateway() {
     Gateway.getPeripherals(id).then((data) => setPeripherals(data));
   }, [id]);
 
+  console.log("Peripherals", peripherals);
+
   return (
     <React.Fragment>
       <h2>

@@ -1,6 +1,5 @@
 import React from "react";
-import { useHistory } from "__mocks__/react-router-dom";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 import PeripheralForm from "./form";
 import Peripheral from "models/peripheral";

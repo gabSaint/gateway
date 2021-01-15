@@ -22,7 +22,7 @@ function UpdateGateway() {
     }
   }, []);
 
-  const handleSubmit = useCallback(async (gatway: Gateway) => {
+  const handleSubmit = useCallback(async (gateway: Gateway) => {
     const data = await Gateway.update(id, gateway || ({} as Gateway));
 
     if (data) {
