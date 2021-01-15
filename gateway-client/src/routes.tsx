@@ -18,6 +18,7 @@ export default function Routes() {
           <Route
             exact
             path="/peripherals"
+            /* istanbul ignore next */
             component={() => <ListPeripherals peripherals={[]} all />}
           />
           <Route

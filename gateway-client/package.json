@@ -55,5 +55,11 @@
       "last 1 safari version"
     ]
   },
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "src/index.tsx",
+      "src/reportWebVitals.ts"
+    ]
+  },
   "proxy": "http://localhost:5000"
 }
