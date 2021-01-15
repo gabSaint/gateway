@@ -15,14 +15,14 @@ describe("ListPeripherals", () => {
       peripherals: [new Peripheral(1, "ASF", "21/23/24", "online", 1)],
     };
 
-    wrapperListPeripherals = shallow(<ListPeripherals peripherals={[]} all />);
-    wrapperListGatewayPeripherals = shallow(<ListPeripherals {...props} />);
+    wrapperListPeripherals = shallow(<ListPeripherals peripherals={[]} />);
+    wrapperListGatewayPeripherals = shallow(
+      <ListPeripherals {...props} fromGate />
+    );
   });
 
   it("renders correctly when listing all peripherals", () => {
-    const tree = renderer
-      .create(<ListPeripherals peripherals={[]} all />)
-      .toJSON();
+    const tree = renderer.create(<ListPeripherals peripherals={[]} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 

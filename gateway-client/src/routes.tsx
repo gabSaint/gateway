@@ -15,12 +15,7 @@ export default function Routes() {
       <Layout>
         <Switch>
           <Route exact path="/" component={ListGateways} />
-          <Route
-            exact
-            path="/peripherals"
-            /* istanbul ignore next */
-            component={() => <ListPeripherals peripherals={[]} all />}
-          />
+          <Route exact path="/peripherals" component={ListPeripherals} />
           <Route
             path="/gateways/:id/peripherals/create"
             component={CreatePeripheral}

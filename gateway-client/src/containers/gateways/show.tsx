@@ -21,7 +21,7 @@ function ShowGateway() {
       <h2>
         <Link to="/">Gateways</Link> - {gateway.name}
       </h2>
-      {peripherals && <ListPeripherals peripherals={peripherals} />}
+      {peripherals && <ListPeripherals peripherals={peripherals} fromGate />}
       <Link to={`/gateways/${gateway.id}/peripherals/create`}>
         <button data-test="button-add-peripheral">Add peripheral</button>
       </Link>

@@ -5,15 +5,15 @@ import Table from "../../components/table";
 import Peripheral from "../../models/peripheral";
 
 export interface Props {
-  peripherals: Peripheral[];
-  all?: boolean;
+  peripherals?: Peripheral[];
+  fromGate?: boolean;
 }
 
 function ListPeripherals(props: Props) {
-  const { all } = props;
+  const all = !props.fromGate;
 
   const [peripherals, setPeripherals] = useState<Peripheral[]>(
-    props.peripherals
+    props.peripherals || []
   );
   const [headers, setHeaders] = useState([
     "UID",
