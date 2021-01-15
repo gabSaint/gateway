@@ -36,9 +36,6 @@ export function FormContent({
   values,
   submitCount,
 }: FormikState<Peripheral>) {
-  console.log("gateway id", values.gatewayId);
-  console.log("Values", values);
-
   return (
     <Form className="ui form">
       <FormInput

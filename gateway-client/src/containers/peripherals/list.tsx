@@ -10,7 +10,7 @@ export interface Props {
 }
 
 function ListPeripherals(props: Props) {
-  const all = props;
+  const { all } = props;
 
   const [peripherals, setPeripherals] = useState<Peripheral[]>(
     props.peripherals
@@ -35,7 +35,7 @@ function ListPeripherals(props: Props) {
         "Operations",
       ]);
     }
-  }, []);
+  }, [all]);
 
   return (
     <React.Fragment>

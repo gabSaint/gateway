@@ -15,12 +15,12 @@ describe("ListPeripherals", () => {
     };
 
     wrapperListPeripherals = shallow(<ListPeripherals peripherals={[]} all />);
-    wrapperListGatewayPeripherals = shallow(<ListPeripherals {...props} />);
+    wrapperListGatewayPeripherals = shallow(
+      <ListPeripherals {...props} all={false} />
+    );
   });
 
   describe("Table", () => {
-    let renderAll;
-
     it("renders Table", () => {
       const table = wrapperListPeripherals.find("Table");
       expect(table).toHaveLength(1);
@@ -32,16 +32,23 @@ describe("ListPeripherals", () => {
     });
 
     it("renders 5 td foreach tr in body when showing peripheral", () => {
-      const tableBodyRows = wrapperListGatewayPeripherals.find("tbody>tr");
-      const tableBodyColumns = wrapperListGatewayPeripherals.find(
-        "tbody>tr>td"
-      );
+      const tableBodyRows = wrapperListGatewayPeripherals.find("tr");
+      const tableBodyColumns = wrapperListGatewayPeripherals.find("tr>td");
       expect(tableBodyColumns.length).toBe(5 * tableBodyRows.length);
     });
 
+    it("renders correctly the peripheral", () => {
+      const tableBodyColumns = wrapperListGatewayPeripherals.find("tr>td");
+
+      const attributes = ["1", "ASF", "21/23/24", "online"];
+      attributes.forEach((attr: string, i: number) => {
+        expect(tableBodyColumns.at(i).text()).toBe(attr);
+      });
+    });
+
     it("renders 6 td foreach tr in body when showing all", () => {
-      const tableBodyRows = wrapperListPeripherals.find("tbody>tr");
-      const tableBodyColumns = wrapperListPeripherals.find("tbody>tr>td");
+      const tableBodyRows = wrapperListPeripherals.find("tr");
+      const tableBodyColumns = wrapperListPeripherals.find("tr>td");
       expect(tableBodyColumns.length).toBe(6 * tableBodyRows.length);
     });
   });
@@ -58,19 +65,6 @@ describe("ListPeripherals", () => {
         "[data-test='form-button-edit']"
       );
       expect(editButtons).toHaveLength(tablebodyLastcolumns.length);
-    });
-  });
-
-  describe("When a peripheral is passed to the component", () => {
-    it("displays the peripheral in the table", () => {
-      const tableRowsColumns = wrapperListGatewayPeripherals.find(
-        "tbody>tr>td"
-      );
-
-      const attributes = ["1", "ASF", "21/23/24", "online"];
-      attributes.forEach((attr: string, i: number) => {
-        expect(tableRowsColumns.at(i).text()).toBe(attr);
-      });
     });
   });
 });
