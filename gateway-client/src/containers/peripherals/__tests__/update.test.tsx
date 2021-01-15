@@ -16,6 +16,9 @@ describe("UpdatePeripheral", () => {
   });
 
   it("renders correctly", () => {
+    // @ts-ignore
+    useParams.mockImplementationOnce(() => ({ id: "1" }));
+
     const tree = renderer.create(<UpdatePeripheral />).toJSON();
     expect(tree).toMatchSnapshot();
   });
