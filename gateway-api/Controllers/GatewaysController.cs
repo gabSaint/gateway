@@ -17,8 +17,6 @@ namespace gateway_api.Controllers
     {
         private readonly GatewayContext _context;
 
-        private readonly ILogger<GatewaysController> _logger;
-
         public GatewaysController(GatewayContext context)
         {
             _context = context;
@@ -40,6 +38,7 @@ namespace gateway_api.Controllers
         }
 
         [HttpPost]
+        [Route("")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult<IQueryable<Gateway>> PostGateway(Gateway gateway)
@@ -53,10 +52,63 @@ namespace gateway_api.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogWarning(e, "Unable to create Gateway");
-
                 return ValidationProblem(e.Message);
             }
+        }
+
+        [HttpGet]
+        [Route("{Id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<IQueryable<Gateway>> GetGatewayById([FromRoute] int Id)
+        {
+            var gatewayDB = _context.Gateways.FirstOrDefault(g => g.Id == Id);
+
+            if (gatewayDB == null) return NotFound();
+
+            return Ok(gatewayDB);
+        }
+
+        [HttpPut]
+        [Route("{Id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public ActionResult<IQueryable<Gateway>> PutGateway([FromRoute] int Id, [FromBody] Gateway gateway)
+        {
+            try
+            {
+                var gatewayDB = _context.Gateways.FirstOrDefault(g => g.Id == Id);
+
+                if (gatewayDB == null) return NotFound();
+
+                gatewayDB.Name = gateway.Name;
+                gatewayDB.Serial = gateway.Serial;
+                gatewayDB.Address = gateway.Address;
+
+                _context.SaveChanges();
+                return Ok(gateway);
+            }
+            catch (Exception e)
+            {
+                return ValidationProblem(e.Message);
+            }
+        }
+
+        [HttpDelete]
+        [Route("{Id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<IQueryable<Gateway>> DeleteGateway([FromRoute] int Id)
+        {
+            var gatewayDB = _context.Gateways.FirstOrDefault(g => g.Id == Id);
+
+            if (gatewayDB == null) return NotFound();
+
+            _context.Gateways.Remove(gatewayDB);
+            _context.SaveChanges();
+
+            return NoContent();
         }
 
 
