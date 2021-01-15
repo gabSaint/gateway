@@ -1,23 +1,60 @@
+import React, { useCallback, useEffect, useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
+import axios from "axios";
+
 import Gateway from "models/gateway";
-import React from "react";
-import { useParams } from "react-router-dom";
 import GatewayForm from "./form";
 
-interface Params {
-  id: string;
-}
+export const getGateway = async (id: number) => {
+  const response = await axios.get(`/gateways/${id}`);
+
+  if (response.status === 200) {
+    return response.data;
+  }
+  return {} as Gateway;
+};
+
+export const putGateway = async (data: Gateway, id: number) => {
+  const response = await axios.put(`/gateways/${id}`, data);
+
+  if (response.status === 200) {
+    return response.data;
+  }
+};
+
+export const deleteGateway = async (id: number) => {
+  const response = await axios.delete(`/gateways/${id}`);
+
+  if (response.status === 200) {
+    return response.data;
+  }
+};
 
 function UpdateGateway() {
-  const { id } = useParams<Params>();
+  const [gateway, setGateway] = useState<Gateway>();
 
-  function handleRemove() {
-    // const newList = gateways.filter((item) => item.id != id);
-    // setGateways(newList);
-  }
+  const { id } = useParams<any>();
+  const history = useHistory();
 
-  const handleSubmit = (gateway: Gateway) => {
-    console.log("Gateway edited", gateway);
-  };
+  useEffect(() => {
+    getGateway(id).then((data) => setGateway(data));
+  }, []);
+
+  const handleRemove = useCallback(async () => {
+    const data = await deleteGateway(id);
+
+    if (data) {
+      history.push("/gateways");
+    }
+  }, []);
+
+  const handleSubmit = useCallback(async (gateway: Gateway) => {
+    const data = await putGateway(gateway, id);
+
+    if (data) {
+      history.push("/gateways");
+    }
+  }, []);
 
   return (
     <React.Fragment>
@@ -32,10 +69,7 @@ function UpdateGateway() {
           Delete
         </button>
       </div>
-      <GatewayForm
-        gateway={new Gateway(JSON.parse(id), "", "", "")}
-        handleSubmit={handleSubmit}
-      />
+      <GatewayForm gateway={gateway} handleSubmit={handleSubmit} />
     </React.Fragment>
   );
 }

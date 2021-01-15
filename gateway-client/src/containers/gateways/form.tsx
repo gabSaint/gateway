@@ -1,11 +1,11 @@
-import React from "react";
-import { Formik, Field, Form, FormikState } from "formik";
+import React, { useEffect, useMemo, useState } from "react";
+import { Formik, Form, FormikState } from "formik";
 import Gateway from "../../models/gateway";
 import { Link } from "react-router-dom";
 import FormInput from "components/formInput";
 
 export interface Props {
-  gateway: Gateway;
+  gateway?: Gateway;
   handleSubmit(g: Gateway): void;
 }
 
@@ -13,9 +13,17 @@ function GatewayForm(props: Props) {
   const { gateway, handleSubmit } = props;
 
   return (
-    <Formik initialValues={gateway} onSubmit={handleSubmit} validate={validate}>
-      {(formikProps) => <FormContent {...formikProps} />}
-    </Formik>
+    <React.Fragment>
+      {gateway && (
+        <Formik
+          initialValues={gateway}
+          onSubmit={handleSubmit}
+          validate={validate}
+        >
+          {(formikProps) => <FormContent {...formikProps} />}
+        </Formik>
+      )}
+    </React.Fragment>
   );
 }
 
