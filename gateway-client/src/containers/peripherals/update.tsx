@@ -26,7 +26,8 @@ function UpdatePeripheral() {
     const data = await Peripheral.update(id, peripheral || ({} as Peripheral));
 
     if (data) {
-      history.push(`/gateways/${gateway_id}`);
+      // history.push(`/gateways/${gateway_id}`);
+      history.goBack();
     }
   }, []);
 
@@ -42,10 +43,7 @@ function UpdatePeripheral() {
           Delete
         </button>
       </div>
-      <PeripheralForm
-        peripheral={{} as Peripheral}
-        handleSubmit={handleSubmit}
-      />
+      <PeripheralForm peripheral={peripheral} handleSubmit={handleSubmit} />
     </React.Fragment>
   );
 }

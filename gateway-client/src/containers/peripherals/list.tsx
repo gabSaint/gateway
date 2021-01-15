@@ -13,40 +13,45 @@ function ListPeripherals(props: Props) {
     props.peripherals
   );
 
+  const all = props.peripherals.length === 0;
+
   useEffect(() => {
-    if (props.peripherals.length === 0) {
+    if (all) {
       Peripheral.getAll().then((data) => setPeripherals(data));
     }
   }, []);
 
   return (
-    <Table
-      headers={[
-        new Header("UID"),
-        new Header("Vendor"),
-        new Header("Date"),
-        new Header("Status"),
-        new Header("Operations"),
-      ]}
-    >
-      {peripherals.map((peripheral, k) => (
-        <tr key={k}>
-          <td>{peripheral.id}</td>
-          <td>{peripheral.vendor}</td>
-          <td>{peripheral.date}</td>
-          <td>{peripheral.status}</td>
-          <td>
-            <Link
-              to={`/gateways/${peripheral.gatewayId}/peripherals/${peripheral.id}/edit`}
-            >
-              <button className="button-edit" data-test="form-button-edit">
-                edit
-              </button>
-            </Link>
-          </td>
-        </tr>
-      ))}
-    </Table>
+    <React.Fragment>
+      {all && <h2>Peripherals</h2>}
+      <Table
+        headers={[
+          new Header("UID"),
+          new Header("Vendor"),
+          new Header("Date"),
+          new Header("Status"),
+          new Header("Operations"),
+        ]}
+      >
+        {peripherals.map((peripheral, k) => (
+          <tr key={k}>
+            <td>{peripheral.id}</td>
+            <td>{peripheral.vendor}</td>
+            <td>{peripheral.date}</td>
+            <td>{peripheral.status}</td>
+            <td>
+              <Link
+                to={`/gateways/${peripheral.gatewayId}/peripherals/${peripheral.id}/edit`}
+              >
+                <button className="button-edit" data-test="form-button-edit">
+                  edit
+                </button>
+              </Link>
+            </td>
+          </tr>
+        ))}
+      </Table>
+    </React.Fragment>
   );
 }
 

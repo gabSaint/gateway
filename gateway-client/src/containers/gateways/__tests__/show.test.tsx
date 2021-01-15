@@ -1,8 +1,8 @@
 import React from "react";
 import { ReactWrapper, shallow, ShallowWrapper } from "enzyme";
+import { useParams } from "__mocks__/react-router-dom";
 
 import ShowGateway from "../show";
-import { useParams } from "__mocks__/react-router-dom";
 
 describe("ShowGateway", () => {
   let wrapperShowGateway: ShallowWrapper | ReactWrapper;
@@ -24,13 +24,6 @@ describe("ShowGateway", () => {
         "[data-test='button-add-peripheral']"
       );
       expect(newPeripheralButton).toHaveLength(1);
-    });
-  });
-
-  describe("List Peripherals", () => {
-    it("renders a list of Peripherals", () => {
-      const listPeripherals = wrapperShowGateway.find("ListPeripherals");
-      expect(listPeripherals).toHaveLength(1);
     });
   });
 });

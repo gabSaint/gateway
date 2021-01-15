@@ -1,7 +1,8 @@
 import React from "react";
 import { Formik, Form, FormikState } from "formik";
-import Gateway from "../../models/gateway";
 import { Link } from "react-router-dom";
+
+import Gateway from "../../models/gateway";
 import FormInput from "components/formInput";
 
 export interface Props {

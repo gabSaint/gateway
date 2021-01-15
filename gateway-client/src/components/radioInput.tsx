@@ -12,12 +12,12 @@ function RadioInput(props: Props) {
 
   return (
     <div className="field">
-      <div className="ui radio align">
+      <div className="ui radio checkbox">
         <Field
           type="radio"
           name={name}
           value={value}
-          tabindex="0"
+          tabIndex="0"
           className="radio-item"
         />
         <label>{label}</label>

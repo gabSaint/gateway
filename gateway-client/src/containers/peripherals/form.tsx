@@ -1,13 +1,14 @@
 import React from "react";
 import { Formik, Form, FormikState } from "formik";
-import Peripheral from "models/peripheral";
 import { Link } from "react-router-dom";
+
+import Peripheral from "models/peripheral";
 import FormInput from "components/formInput";
 import FormRadio from "components/formradio";
 import RadioInput from "components/radioInput";
 
 export interface Props {
-  peripheral: Peripheral;
+  peripheral?: Peripheral;
   handleSubmit(p: Peripheral): void;
 }
 
@@ -15,13 +16,17 @@ function PeripheralForm(props: Props) {
   const { peripheral, handleSubmit } = props;
 
   return (
-    <Formik
-      initialValues={peripheral}
-      onSubmit={handleSubmit}
-      validate={validate}
-    >
-      {(formikProps) => <FormContent {...formikProps} />}
-    </Formik>
+    <React.Fragment>
+      {peripheral && (
+        <Formik
+          initialValues={peripheral}
+          onSubmit={handleSubmit}
+          validate={validate}
+        >
+          {(formikProps) => <FormContent {...formikProps} />}
+        </Formik>
+      )}
+    </React.Fragment>
   );
 }
 
@@ -31,6 +36,9 @@ export function FormContent({
   values,
   submitCount,
 }: FormikState<Peripheral>) {
+  console.log("gateway id", values.gatewayId);
+  console.log("Values", values);
+
   return (
     <Form className="ui form">
       <FormInput

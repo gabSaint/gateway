@@ -12,7 +12,7 @@ function CreatePeripheral() {
     const data = await Peripheral.create(id, peripheral);
 
     if (data) {
-      history.push("/gateways/:id");
+      history.push(`/gateways/${id}`);
     }
   };
 
@@ -21,7 +21,11 @@ function CreatePeripheral() {
       <h2>Create Peripheral</h2>
       <PeripheralForm
         peripheral={
-          { status: "online", date: new Date().toString() } as Peripheral
+          {
+            status: "online",
+            date: new Date().toDateString(),
+            gatewayId: id,
+          } as Peripheral
         }
         handleSubmit={handleSubmit}
       ></PeripheralForm>

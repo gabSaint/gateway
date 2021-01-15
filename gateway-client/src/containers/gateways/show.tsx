@@ -7,7 +7,7 @@ import ListPeripherals from "../peripherals/list";
 
 function ShowGateway() {
   const [gateway, setGateway] = useState({} as Gateway);
-  const [peripherals, setPeripherals] = useState<Peripheral[]>([]);
+  const [peripherals, setPeripherals] = useState<Peripheral[]>();
 
   const { id } = useParams<any>();
 
@@ -16,14 +16,12 @@ function ShowGateway() {
     Gateway.getPeripherals(id).then((data) => setPeripherals(data));
   }, [id]);
 
-  console.log("Peripherals", peripherals);
-
   return (
     <React.Fragment>
       <h2>
         <Link to="/">Gateways</Link> - {gateway.name}
       </h2>
-      <ListPeripherals peripherals={peripherals} />
+      {peripherals && <ListPeripherals peripherals={peripherals} />}
       <Link to={`/gateways/${gateway.id}/peripherals/create`}>
         <button data-test="button-add-peripheral">Add peripheral</button>
       </Link>
