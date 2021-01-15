@@ -1,6 +1,6 @@
 import React from "react";
 import { Formik, Form, FormikState } from "formik";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import Gateway from "../../models/gateway";
 import FormInput from "components/formInput";
@@ -34,6 +34,12 @@ export function FormContent({
   values,
   submitCount,
 }: FormikState<Gateway>) {
+  const history = useHistory();
+
+  const handleCancel = () => {
+    history.goBack();
+  };
+
   return (
     <Form className="ui form">
       <FormInput
@@ -65,9 +71,9 @@ export function FormContent({
 
       <button type="submit">Submit</button>
 
-      <Link to="/">
-        <button type="button">Cancel</button>
-      </Link>
+      <button type="button" onClick={handleCancel}>
+        Cancel
+      </button>
     </Form>
   );
 }
