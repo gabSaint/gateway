@@ -1,5 +1,5 @@
-import axios from "__mocks__/axios";
-import { useParams } from "__mocks__/react-router-dom";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 import Peripheral from "models/peripheral";
 
@@ -9,6 +9,7 @@ describe("Peripheral axios calls", () => {
 
     beforeEach(() => {
       data = [new Peripheral(2, "AMS", new Date().toString(), "online", 1)];
+      // @ts-ignore
       axios.get.mockImplementationOnce(() =>
         Promise.resolve({ status: 200, data })
       );
@@ -32,8 +33,10 @@ describe("Peripheral axios calls", () => {
 
     beforeEach(() => {
       data = new Peripheral(2, "AMS", new Date().toString(), "online", 1);
+      // @ts-ignore
       useParams.mockImplementationOnce(() => ({ id: "1" }));
 
+      // @ts-ignore
       axios.get.mockImplementationOnce(() =>
         Promise.resolve({ status: 200, data })
       );
@@ -58,6 +61,7 @@ describe("Peripheral axios calls", () => {
     beforeEach(() => {
       data = new Peripheral(2, "AMS", new Date().toString(), "online", 1);
 
+      // @ts-ignore
       axios.post.mockImplementationOnce(() =>
         Promise.resolve({ status: 201, data })
       );
@@ -81,8 +85,10 @@ describe("Peripheral axios calls", () => {
 
     beforeEach(() => {
       data = new Peripheral(2, "AMS", new Date().toString(), "online", 1);
+      // @ts-ignore
       useParams.mockImplementationOnce(() => ({ id: "1" }));
 
+      // @ts-ignore
       axios.put.mockImplementationOnce(() =>
         Promise.resolve({ status: 200, data })
       );
@@ -107,7 +113,9 @@ describe("Peripheral axios calls", () => {
     beforeEach(() => {
       data = [new Peripheral(2, "AMS", new Date().toString(), "online", 1)];
 
+      // @ts-ignore
       useParams.mockImplementationOnce(() => ({ id: "1" }));
+      // @ts-ignore
       axios.delete.mockImplementationOnce(() =>
         Promise.resolve({ status: 200, data })
       );

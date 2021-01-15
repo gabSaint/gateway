@@ -1,7 +1,7 @@
-import axios from "__mocks__/axios";
+import axios from "axios";
 
 import Gateway from "models/gateway";
-import { useParams } from "__mocks__/react-router-dom";
+import { useParams } from "react-router-dom";
 import Peripheral from "models/peripheral";
 
 describe("Gateways axios calls", () => {
@@ -10,6 +10,7 @@ describe("Gateways axios calls", () => {
 
     beforeEach(() => {
       data = [new Gateway(1, "testSerial", "testName", "127.0.0.1")];
+      // @ts-ignore
       axios.get.mockImplementationOnce(() =>
         Promise.resolve({ status: 200, data })
       );
@@ -33,8 +34,10 @@ describe("Gateways axios calls", () => {
 
     beforeEach(() => {
       data = new Gateway(1, "testSerial", "testName", "127.0.0.1");
+      // @ts-ignore
       useParams.mockImplementationOnce(() => ({ id: "1" }));
 
+      // @ts-ignore
       axios.get.mockImplementationOnce(() =>
         Promise.resolve({ status: 200, data })
       );
@@ -62,7 +65,9 @@ describe("Gateways axios calls", () => {
         new Peripheral(2, "AST", new Date().toString(), "offline", 2),
       ];
 
+      // @ts-ignore
       useParams.mockImplementationOnce(() => ({ id: "2" }));
+      // @ts-ignore
       axios.get.mockImplementationOnce(() =>
         Promise.resolve({ status: 200, data })
       );
@@ -87,6 +92,7 @@ describe("Gateways axios calls", () => {
     beforeEach(() => {
       data = new Gateway(1, "testSerial", "testName", "127.0.0.1");
 
+      // @ts-ignore
       axios.post.mockImplementationOnce(() =>
         Promise.resolve({ status: 201, data })
       );
@@ -110,8 +116,10 @@ describe("Gateways axios calls", () => {
 
     beforeEach(() => {
       data = new Gateway(1, "testSerial", "testName", "127.0.0.1");
+      // @ts-ignore
       useParams.mockImplementationOnce(() => ({ id: "1" }));
 
+      // @ts-ignore
       axios.put.mockImplementationOnce(() =>
         Promise.resolve({ status: 200, data })
       );
@@ -136,7 +144,9 @@ describe("Gateways axios calls", () => {
     beforeEach(() => {
       data = [new Gateway(1, "testSerial", "testName", "127.0.0.1")];
 
+      // @ts-ignore
       useParams.mockImplementationOnce(() => ({ id: "1" }));
+      // @ts-ignore
       axios.delete.mockImplementationOnce(() =>
         Promise.resolve({ status: 200, data })
       );

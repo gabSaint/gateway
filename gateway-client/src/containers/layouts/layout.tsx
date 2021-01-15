@@ -5,7 +5,9 @@ const Layout = (props: any) => {
   return (
     <React.Fragment>
       <Navbar />
-      {props.children}
+      <div id="flex-container" className="ui container">
+        {props.children}
+      </div>
     </React.Fragment>
   );
 };
