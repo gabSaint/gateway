@@ -1,5 +1,7 @@
 import React from "react";
 import { ReactWrapper, shallow, ShallowWrapper } from "enzyme";
+import renderer from "react-test-renderer";
+
 import PeripheralForm, {
   FormContent,
   Props as PeripheralProps,
@@ -18,6 +20,11 @@ describe("PeripheralForm", () => {
       handleSubmit: jest.fn(),
     };
     wrapperPeripheralForm = shallow(<PeripheralForm {...props} />);
+  });
+
+  it("renders correctly", () => {
+    const tree = renderer.create(<PeripheralForm {...props} />).toJSON();
+    expect(tree).toMatchSnapshot();
   });
 
   it("renders form Formik", () => {

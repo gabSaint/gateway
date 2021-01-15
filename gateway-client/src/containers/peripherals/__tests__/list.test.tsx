@@ -1,5 +1,6 @@
 import React from "react";
 import { ReactWrapper, shallow, ShallowWrapper } from "enzyme";
+import renderer from "react-test-renderer";
 
 import ListPeripherals, { Props as PeripheralProps } from "../list";
 import Peripheral from "../../../models/peripheral";
@@ -15,9 +16,19 @@ describe("ListPeripherals", () => {
     };
 
     wrapperListPeripherals = shallow(<ListPeripherals peripherals={[]} all />);
-    wrapperListGatewayPeripherals = shallow(
-      <ListPeripherals {...props} all={false} />
-    );
+    wrapperListGatewayPeripherals = shallow(<ListPeripherals {...props} />);
+  });
+
+  it("renders correctly when listing all peripherals", () => {
+    const tree = renderer
+      .create(<ListPeripherals peripherals={[]} all />)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it("renders correctly when listing a gateway's peripherals", () => {
+    const tree = renderer.create(<ListPeripherals {...props} />).toJSON();
+    expect(tree).toMatchSnapshot();
   });
 
   describe("Table", () => {

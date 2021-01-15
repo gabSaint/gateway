@@ -1,5 +1,6 @@
 import React from "react";
 import { ReactWrapper, shallow, ShallowWrapper } from "enzyme";
+import renderer from "react-test-renderer";
 import { useParams } from "react-router-dom";
 
 import UpdatePeripheral from "../update";
@@ -12,6 +13,11 @@ describe("UpdatePeripheral", () => {
     useParams.mockImplementationOnce(() => ({ id: "1" }));
 
     mountedUpdatePeripheral = shallow(<UpdatePeripheral />);
+  });
+
+  it("renders correctly", () => {
+    const tree = renderer.create(<UpdatePeripheral />).toJSON();
+    expect(tree).toMatchSnapshot();
   });
 
   it("renders Peripheral form", () => {

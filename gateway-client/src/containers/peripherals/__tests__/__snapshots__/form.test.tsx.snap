@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PeripheralForm renders correctly 1`] = `
+<form
+  action="#"
+  className="ui form"
+  onReset={[Function]}
+  onSubmit={[Function]}
+>
+  <div
+    className="field"
+  >
+    <label
+      htmlFor="input-vendor"
+    >
+      Vendor
+    </label>
+    <input
+      id="input-vendor"
+      name="vendor"
+      onBlur={[Function]}
+      onChange={[Function]}
+      value=""
+    />
+  </div>
+  <div
+    className="inline fields"
+    role="group"
+  >
+    <label>
+      Status
+    </label>
+    <div
+      className="field"
+    >
+      <div
+        className="ui radio checkbox"
+      >
+        <input
+          checked={false}
+          className="radio-item"
+          name="status"
+          onBlur={[Function]}
+          onChange={[Function]}
+          tabIndex="0"
+          type="radio"
+          value="online"
+        />
+        <label>
+          Online
+        </label>
+      </div>
+    </div>
+    <div
+      className="field"
+    >
+      <div
+        className="ui radio checkbox"
+      >
+        <input
+          checked={false}
+          className="radio-item"
+          name="status"
+          onBlur={[Function]}
+          onChange={[Function]}
+          tabIndex="0"
+          type="radio"
+          value="offline"
+        />
+        <label>
+          Offline
+        </label>
+      </div>
+    </div>
+  </div>
+  <button
+    data-test="button-submit"
+    type="submit"
+  >
+    Submit
+  </button>
+  <div>
+    <button
+      data-test="button-cancel"
+      onClick={[Function]}
+      type="button"
+    >
+      Cancel
+    </button>
+  </div>
+</form>
+`;
