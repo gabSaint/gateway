@@ -1,11 +1,7 @@
 import React, { FunctionComponent } from "react";
 
-export class Header {
-  constructor(public title: string, public align?: string) {}
-}
-
 export interface Props {
-  headers: Header[];
+  headers: string[];
 }
 
 const Table: FunctionComponent<Props> = (props) => {
@@ -14,9 +10,7 @@ const Table: FunctionComponent<Props> = (props) => {
       <thead>
         <tr>
           {props.headers.map((header, k) => (
-            <th key={k} className={header.align}>
-              {header.title}
-            </th>
+            <th key={k}>{header}</th>
           ))}
         </tr>
       </thead>

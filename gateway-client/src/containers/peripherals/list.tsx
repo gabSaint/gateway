@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import Table, { Header } from "../../components/table";
+import Table from "../../components/table";
 import Peripheral from "../../models/peripheral";
 
 export interface Props {
@@ -24,15 +24,7 @@ function ListPeripherals(props: Props) {
   return (
     <React.Fragment>
       {all && <h2>Peripherals</h2>}
-      <Table
-        headers={[
-          new Header("UID"),
-          new Header("Vendor"),
-          new Header("Date"),
-          new Header("Status"),
-          new Header("Operations"),
-        ]}
-      >
+      <Table headers={["UID", "Vendor", "Date", "Status", "Operations"]}>
         {peripherals.map((peripheral, k) => (
           <tr key={k}>
             <td>{peripheral.id}</td>

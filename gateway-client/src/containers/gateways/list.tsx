@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import Table, { Header } from "../../components/table";
+import Table from "../../components/table";
 import Gateway from "../../models/gateway";
 
 function ListGateways() {
@@ -15,13 +15,7 @@ function ListGateways() {
     <React.Fragment>
       <h2>Gateways</h2>
       <Table
-        headers={[
-          new Header("Id"),
-          new Header("Serial number"),
-          new Header("Name"),
-          new Header("Ipv4 Address"),
-          new Header("Operations"),
-        ]}
+        headers={["Id", "Serial number", "Name", "Ipv4 address", "Operations"]}
       >
         {gateways.map((gate, k) => (
           <tr key={k}>

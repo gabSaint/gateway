@@ -32,7 +32,7 @@ describe("When a header is passed to the component", () => {
 
   beforeEach(() => {
     props = {
-      headers: [new Header("name"), new Header("age")],
+      headers: ["name", "age"],
     };
     wrapperTable = shallow(<Table {...props} />);
   });
@@ -42,8 +42,7 @@ describe("When a header is passed to the component", () => {
     expect(tableHeaders).toHaveLength(props.headers.length);
 
     tableHeaders.forEach((th: any) => {
-      const headers = props.headers.map((h) => h.title);
-      expect(headers).toContain(th.text());
+      expect(props.headers).toContain(th.text());
     });
   });
 });
