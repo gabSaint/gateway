@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "gateways",
+      "launchUrl": "api/gateways",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -20,7 +20,7 @@
     "gateway_api": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "gateways",
+      "launchUrl": "api/gateways",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
@@ -29,7 +29,7 @@
     "Docker": {
       "commandName": "Docker",
       "launchBrowser": true,
-      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/gateways",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/api/gateways",
       "publishAllPorts": true
     }
   }

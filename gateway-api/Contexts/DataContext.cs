@@ -7,10 +7,13 @@ using System.Threading.Tasks;
 
 namespace gateway_api.Contexts
 {
-    public class GatewayContext : DbContext
+    public class DataContext : DbContext
     {
-        public GatewayContext(DbContextOptions<GatewayContext> options) : base(options) { }
+        public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
         public DbSet<Gateway> Gateways { get; set; }
+
+        public DbSet<Peripheral> Peripherals { get; set; }
+
     }
 }

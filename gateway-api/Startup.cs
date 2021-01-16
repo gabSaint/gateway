@@ -36,7 +36,7 @@ namespace gateway_api
                 Version = "v1"
             }));
 
-            services.AddDbContext<GatewayContext>(options => options.UseInMemoryDatabase("Gateways"));
+            services.AddDbContext<DataContext>(options => options.UseInMemoryDatabase("Gateways"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

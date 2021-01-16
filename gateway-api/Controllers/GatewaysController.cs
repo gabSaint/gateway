@@ -2,7 +2,6 @@
 using gateway_api.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,13 +10,13 @@ using System.Threading.Tasks;
 namespace gateway_api.Controllers
 {
     [ApiController]
-    [Route("/gateways")]
+    [Route("/api/gateways")]
     [Produces("application/json")]
     public class GatewaysController : ControllerBase
     {
-        private readonly GatewayContext _context;
+        private readonly DataContext _context;
 
-        public GatewaysController(GatewayContext context)
+        public GatewaysController(DataContext context)
         {
             _context = context;
 
@@ -106,12 +105,12 @@ namespace gateway_api.Controllers
             if (gatewayDB == null) return NotFound();
 
             _context.Gateways.Remove(gatewayDB);
+            _context.Peripherals.RemoveRange(_context.Peripherals.Where(p => p.GatewayId == Id));
+
             _context.SaveChanges();
 
             return NoContent();
         }
-
-
 
     }
 }

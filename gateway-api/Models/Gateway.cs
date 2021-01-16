@@ -26,7 +26,7 @@ namespace gateway_api.Models
 
     public static class GatewaySeed
     {
-        public static void InitData(GatewayContext context)
+        public static void InitData(DataContext context)
         {
             var rnd = new Random();
 
@@ -36,7 +36,7 @@ namespace gateway_api.Models
 
             var addresses = new [] {"127.0.0.1", "127.0.0.2", "127.0.0.3", "127.0.0.4", "127.0.0.5" };
 
-            context.Gateways.AddRange(100.Times(x =>
+            context.Gateways.AddRange(20.Times(x =>
             {
                 var serial = serials[rnd.Next(0, 5)];
                 var name = names[rnd.Next(0, 6)];
