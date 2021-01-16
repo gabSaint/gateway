@@ -33,14 +33,14 @@ describe("Routes", () => {
 
   it("renders all paths", () => {
     const paths = [
-      "/api/",
-      "/api/gateways",
-      "/api/gateways/create",
-      "/api/gateways/:id",
-      "/api/gateways/:id/edit",
-      "/api/gateways/:id/peripherals/create",
-      "/api/gateways/:gateway_id/peripherals/:id/edit",
-      "/api/peripherals",
+      "/",
+      "/gateways",
+      "/gateways/create",
+      "/gateways/:id",
+      "/gateways/:id/edit",
+      "/gateways/:id/peripherals/create",
+      "/gateways/:gateway_id/peripherals/:id/edit",
+      "/peripherals",
     ];
 
     const routes = wrapperRoutes.find("Route");
