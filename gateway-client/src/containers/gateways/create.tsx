@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 
 import Gateway from "../../models/gateway";
 import GatewayForm from "./form";
@@ -7,13 +7,11 @@ import { useHistory } from "react-router-dom";
 function CreateGateway() {
   const history = useHistory();
 
-  const handleSubmit = async (gateway: Gateway) => {
-    const data = await Gateway.create(gateway);
-
-    if (data) {
+  const handleSubmit = useCallback((gateway: Gateway) => {
+    Gateway.create(gateway).then(() => {
       history.push("/gateways");
-    }
-  };
+    });
+  }, []);
 
   return (
     <React.Fragment>

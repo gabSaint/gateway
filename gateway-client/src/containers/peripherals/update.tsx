@@ -7,27 +7,21 @@ import PeripheralForm from "./form";
 function UpdatePeripheral() {
   const [peripheral, setPeripheral] = useState<Peripheral>();
 
-  const { gateway_id, id } = useParams<any>();
+  const { id } = useParams<any>();
   const history = useHistory();
 
   useEffect(() => {
     Peripheral.getById(id).then((data) => setPeripheral(data));
   }, []);
 
-  const handleRemove = useCallback(async () => {
-    const data = await Peripheral.delete(id);
-
-    if (data) {
-      history.goBack();
-    }
+  const handleRemove = useCallback(() => {
+    Peripheral.delete(id).then(() => history.goBack());
   }, []);
 
-  const handleSubmit = useCallback(async (peripheral: Peripheral) => {
-    const data = await Peripheral.update(id, peripheral || ({} as Peripheral));
-
-    if (data) {
+  const handleSubmit = useCallback((peripheral: Peripheral) => {
+    Peripheral.update(id, peripheral || ({} as Peripheral)).then(() => {
       history.goBack();
-    }
+    });
   }, []);
 
   return (

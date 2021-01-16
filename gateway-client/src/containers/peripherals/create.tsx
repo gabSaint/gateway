@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useParams, useHistory } from "react-router-dom";
 
 import PeripheralForm from "./form";
@@ -8,13 +8,11 @@ function CreatePeripheral() {
   const { id } = useParams<any>();
   const history = useHistory();
 
-  const handleSubmit = async (peripheral: Peripheral) => {
-    const data = await Peripheral.create(id, peripheral);
-
-    if (data) {
+  const handleSubmit = useCallback((peripheral: Peripheral) => {
+    Peripheral.create(id, peripheral).then(() => {
       history.push(`/gateways/${id}`);
-    }
-  };
+    });
+  }, []);
 
   return (
     <React.Fragment>

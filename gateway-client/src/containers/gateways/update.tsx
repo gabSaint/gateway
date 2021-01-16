@@ -14,20 +14,14 @@ function UpdateGateway() {
     Gateway.getById(id).then((data) => setGateway(data));
   }, []);
 
-  const handleRemove = useCallback(async () => {
-    const data = await Gateway.delete(id);
-
-    if (data) {
-      history.push("/gateways");
-    }
+  const handleRemove = useCallback(() => {
+    Gateway.delete(id).then(() => history.push("/gateways"));
   }, []);
 
-  const handleSubmit = useCallback(async (gateway: Gateway) => {
-    const data = await Gateway.update(id, gateway || ({} as Gateway));
-
-    if (data) {
-      history.push("/gateways");
-    }
+  const handleSubmit = useCallback((gateway: Gateway) => {
+    Gateway.update(id, gateway || ({} as Gateway)).then(() =>
+      history.push("/gateways")
+    );
   }, []);
 
   return (

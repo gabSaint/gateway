@@ -28,10 +28,7 @@ export default class Peripheral {
   };
 
   static create = async (gate_id: number, data: Peripheral) => {
-    const response = await axios.post(
-      `/api/gateways/${gate_id}/peripherals`,
-      data
-    );
+    const response = await axios.post(`/api/peripherals`, data);
 
     if (response.status === 201) {
       return response.data;

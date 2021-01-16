@@ -20,6 +20,7 @@ code {
 
 button {
   @extend .ui.button;
+  margin-bottom: 3px;
 }
 
 .contain-row {
