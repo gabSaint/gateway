@@ -112,5 +112,18 @@ namespace gateway_api.Controllers
             return NoContent();
         }
 
+        [HttpGet]
+        [Route("{Id}/peripherals")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<IQueryable<Gateway>> GetPeripherals([FromRoute] int Id)
+        {
+            var gatewayDB = _context.Gateways.FirstOrDefault(g => g.Id == Id);
+            if (gatewayDB == null) return NotFound("Gateway not found.");
+            
+            var peripheralsDB = _context.Peripherals.Where(p => p.GatewayId == Id);
+            return Ok(peripheralsDB);
+        }
+
     }
 }
