@@ -3,15 +3,17 @@ import { useHistory } from "react-router-dom";
 
 import Gateway from "../../models/gateway";
 import GatewayForm from "./form";
-import Message from "components/message";
 
 function CreateGateway() {
   const history = useHistory();
 
   const handleSubmit = useCallback((gateway: Gateway) => {
     Gateway.create(gateway).then((error) => {
-      <Message error={error} />;
-      history.push("/gateways");
+      if (error) {
+        alert(error);
+      } else {
+        history.push("/gateways");
+      }
     });
   }, []);
 
