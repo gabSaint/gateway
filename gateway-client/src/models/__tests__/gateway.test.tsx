@@ -1,7 +1,7 @@
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 import Gateway from "models/gateway";
-import { useParams } from "react-router-dom";
 import Peripheral from "models/peripheral";
 
 describe("Gateways axios calls", () => {
@@ -18,7 +18,7 @@ describe("Gateways axios calls", () => {
 
     it("calls axios with correct url", async () => {
       await Gateway.getAll();
-      expect(axios.get).toHaveBeenCalledWith("/gateways");
+      expect(axios.get).toHaveBeenCalledWith("/api/gateways");
     });
 
     it("returns data on correct status code", async () => {
@@ -45,7 +45,7 @@ describe("Gateways axios calls", () => {
 
     it("calls axios with correct url", async () => {
       await Gateway.getById(1);
-      expect(axios.get).toHaveBeenCalledWith("/gateways/1");
+      expect(axios.get).toHaveBeenCalledWith("/api/gateways/1");
     });
 
     it("returns data on correct status code", async () => {
@@ -75,7 +75,7 @@ describe("Gateways axios calls", () => {
 
     it("calls axios with correct url", async () => {
       await Gateway.getPeripherals(2);
-      expect(axios.get).toHaveBeenCalledWith("/gateways/2/peripherals");
+      expect(axios.get).toHaveBeenCalledWith("/api/gateways/2/peripherals");
     });
 
     it("returns data on correct status code", async () => {
@@ -100,7 +100,7 @@ describe("Gateways axios calls", () => {
 
     it("calls axios with correct url", async () => {
       await Gateway.create(data);
-      expect(axios.post).toHaveBeenCalledWith("/gateways", data);
+      expect(axios.post).toHaveBeenCalledWith("/api/gateways", data);
     });
 
     it("returns data on correct status code", async () => {
@@ -127,7 +127,7 @@ describe("Gateways axios calls", () => {
 
     it("calls axios with correct url", async () => {
       await Gateway.update(1, data);
-      expect(axios.put).toHaveBeenCalledWith("/gateways/1", data);
+      expect(axios.put).toHaveBeenCalledWith("/api/gateways/1", data);
     });
 
     it("returns data on correct status code", async () => {
@@ -154,7 +154,7 @@ describe("Gateways axios calls", () => {
 
     it("calls axios with correct url", async () => {
       await Gateway.delete(1);
-      expect(axios.delete).toHaveBeenCalledWith("/gateways/1");
+      expect(axios.delete).toHaveBeenCalledWith("/api/gateways/1");
     });
 
     it("returns data on correct status code", async () => {

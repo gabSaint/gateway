@@ -17,7 +17,7 @@ describe("Peripheral axios calls", () => {
 
     it("calls axios with correct url", async () => {
       await Peripheral.getAll();
-      expect(axios.get).toHaveBeenCalledWith("/peripherals");
+      expect(axios.get).toHaveBeenCalledWith("/api/peripherals");
     });
 
     it("returns data on correct status code", async () => {
@@ -44,7 +44,7 @@ describe("Peripheral axios calls", () => {
 
     it("calls axios with correct url", async () => {
       await Peripheral.getById(2);
-      expect(axios.get).toHaveBeenCalledWith("/peripherals/2");
+      expect(axios.get).toHaveBeenCalledWith("/api/peripherals/2");
     });
 
     it("returns data on correct status code", async () => {
@@ -69,7 +69,10 @@ describe("Peripheral axios calls", () => {
 
     it("calls axios with correct url", async () => {
       await Peripheral.create(1, data);
-      expect(axios.post).toHaveBeenCalledWith("/gateways/1/peripherals", data);
+      expect(axios.post).toHaveBeenCalledWith(
+        "/api/gateways/1/peripherals",
+        data
+      );
     });
 
     it("returns data on correct status code", async () => {
@@ -96,7 +99,7 @@ describe("Peripheral axios calls", () => {
 
     it("calls axios with correct url", async () => {
       await Peripheral.update(2, data);
-      expect(axios.put).toHaveBeenCalledWith("/peripherals/2", data);
+      expect(axios.put).toHaveBeenCalledWith("/api/peripherals/2", data);
     });
 
     it("returns data on correct status code", async () => {
@@ -123,7 +126,7 @@ describe("Peripheral axios calls", () => {
 
     it("calls axios with correct url", async () => {
       await Peripheral.delete(2);
-      expect(axios.delete).toHaveBeenCalledWith("/peripherals/2");
+      expect(axios.delete).toHaveBeenCalledWith("/api/peripherals/2");
     });
 
     it("returns data on correct status code", async () => {

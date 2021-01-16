@@ -9,7 +9,7 @@ export default class Gateway {
   ) {}
 
   static getAll = async () => {
-    const response = await axios.get(`/gateways`);
+    const response = await axios.get(`/api/gateways`);
 
     if (response.status === 200) {
       return response.data;
@@ -18,7 +18,7 @@ export default class Gateway {
   };
 
   static getById = async (id: number) => {
-    const response = await axios.get(`/gateways/${id}`);
+    const response = await axios.get(`/api/gateways/${id}`);
 
     if (response.status === 200) {
       return response.data;
@@ -27,7 +27,7 @@ export default class Gateway {
   };
 
   static getPeripherals = async (id: number) => {
-    const response = await axios.get(`/gateways/${id}/peripherals`);
+    const response = await axios.get(`/api/gateways/${id}/peripherals`);
 
     if (response.status === 200) {
       return response.data;
@@ -36,7 +36,7 @@ export default class Gateway {
   };
 
   static create = async (data: Gateway) => {
-    const response = await axios.post(`/gateways`, data);
+    const response = await axios.post(`/api/gateways`, data);
 
     if (response.status === 201) {
       return response.data;
@@ -44,7 +44,7 @@ export default class Gateway {
   };
 
   static update = async (id: number, data: Gateway) => {
-    const response = await axios.put(`/gateways/${id}`, data);
+    const response = await axios.put(`/api/gateways/${id}`, data);
 
     if (response.status === 200) {
       return response.data;
@@ -52,7 +52,7 @@ export default class Gateway {
   };
 
   static delete = async (id: number) => {
-    const response = await axios.delete(`/gateways/${id}`);
+    const response = await axios.delete(`/api/gateways/${id}`);
 
     if (response.status === 200) {
       return response.data;

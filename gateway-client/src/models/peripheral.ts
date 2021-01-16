@@ -10,7 +10,7 @@ export default class Peripheral {
   ) {}
 
   static getAll = async () => {
-    const response = await axios.get(`/peripherals`);
+    const response = await axios.get(`/api/peripherals`);
 
     if (response.status === 200) {
       return response.data;
@@ -19,7 +19,7 @@ export default class Peripheral {
   };
 
   static getById = async (id: number) => {
-    const response = await axios.get(`/peripherals/${id}`);
+    const response = await axios.get(`/api/peripherals/${id}`);
 
     if (response.status === 200) {
       return response.data;
@@ -28,7 +28,10 @@ export default class Peripheral {
   };
 
   static create = async (gate_id: number, data: Peripheral) => {
-    const response = await axios.post(`/gateways/${gate_id}/peripherals`, data);
+    const response = await axios.post(
+      `/api/gateways/${gate_id}/peripherals`,
+      data
+    );
 
     if (response.status === 201) {
       return response.data;
@@ -36,7 +39,7 @@ export default class Peripheral {
   };
 
   static update = async (id: number, data: Peripheral) => {
-    const response = await axios.put(`/peripherals/${id}`, data);
+    const response = await axios.put(`/api/peripherals/${id}`, data);
 
     if (response.status === 200) {
       return response.data;
@@ -44,7 +47,7 @@ export default class Peripheral {
   };
 
   static delete = async (id: number) => {
-    const response = await axios.delete(`/peripherals/${id}`);
+    const response = await axios.delete(`/api/peripherals/${id}`);
 
     if (response.status === 200) {
       return response.data;

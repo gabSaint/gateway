@@ -14,20 +14,20 @@ export default function Routes() {
     <Router>
       <Layout>
         <Switch>
-          <Route exact path="/" component={ListGateways} />
-          <Route exact path="/peripherals" component={ListPeripherals} />
+          <Route exact path="/api/" component={ListGateways} />
+          <Route exact path="/api/peripherals" component={ListPeripherals} />
           <Route
-            path="/gateways/:id/peripherals/create"
+            path="/api/gateways/:id/peripherals/create"
             component={CreatePeripheral}
           />
           <Route
-            path="/gateways/:gateway_id/peripherals/:id/edit"
+            path="/api/gateways/:gateway_id/peripherals/:id/edit"
             component={UpdatePeripheral}
           />
-          <Route exact path="/gateways" component={ListGateways} />
-          <Route path="/gateways/create" component={CreateGateway} />
-          <Route path="/gateways/:id/edit" component={UpdateGateway} />
-          <Route path="/gateways/:id" component={ShowGateway} />
+          <Route exact path="/api/gateways" component={ListGateways} />
+          <Route path="/api/gateways/create" component={CreateGateway} />
+          <Route path="/api/gateways/:id/edit" component={UpdateGateway} />
+          <Route path="/api/gateways/:id" component={ShowGateway} />
         </Switch>
       </Layout>
     </Router>

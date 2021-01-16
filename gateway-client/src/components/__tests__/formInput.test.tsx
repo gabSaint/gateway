@@ -29,7 +29,7 @@ describe("Form Input", () => {
     beforeEach(() => {
       const wrongInput = {
         name: "",
-        field: "",
+        label: "",
         error: "error",
         touched: true,
         value: "",
@@ -37,7 +37,7 @@ describe("Form Input", () => {
       };
       const correctInput = {
         name: "",
-        field: "",
+        label: "",
         error: "",
         touched: false,
         value: "",
