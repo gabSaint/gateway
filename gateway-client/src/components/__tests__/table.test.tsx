@@ -10,7 +10,7 @@ describe("Table", () => {
   beforeEach(() => {
     props = {
       headers: ["name", "age"],
-      children: <p id="test-table-body-child"></p>,
+      children: <p id="child" />,
     };
     wrapperTable = shallow(<Table {...props} />);
   });
@@ -43,7 +43,7 @@ describe("Table", () => {
 
   describe("When children is passed to the component", () => {
     it("displays children inside table body", () => {
-      const tableBodyChild = wrapperTable.find("tbody>p#test-table-body-child");
+      const tableBodyChild = wrapperTable.find("tbody>p#child");
       expect(tableBodyChild).toHaveLength(1);
     });
   });

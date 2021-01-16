@@ -3,6 +3,7 @@ import { useParams, useHistory } from "react-router-dom";
 
 import Peripheral from "models/peripheral";
 import PeripheralForm from "./form";
+import Message from "components/message";
 
 function UpdatePeripheral() {
   const [peripheral, setPeripheral] = useState<Peripheral>();
@@ -15,11 +16,15 @@ function UpdatePeripheral() {
   }, []);
 
   const handleRemove = useCallback(() => {
-    Peripheral.delete(id).then(() => history.goBack());
+    Peripheral.delete(id).then((error) => {
+      <Message error={error} />;
+      history.goBack();
+    });
   }, []);
 
   const handleSubmit = useCallback((peripheral: Peripheral) => {
-    Peripheral.update(id, peripheral || ({} as Peripheral)).then(() => {
+    Peripheral.update(id, peripheral || ({} as Peripheral)).then((error) => {
+      <Message error={error} />;
       history.goBack();
     });
   }, []);

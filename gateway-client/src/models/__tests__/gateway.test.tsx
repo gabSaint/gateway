@@ -5,7 +5,7 @@ import Gateway from "models/gateway";
 import Peripheral from "models/peripheral";
 
 describe("Gateways axios calls", () => {
-  describe("getAll", () => {
+  describe("GetAll", () => {
     let data: Gateway[];
 
     beforeEach(() => {
@@ -29,7 +29,7 @@ describe("Gateways axios calls", () => {
     });
   });
 
-  describe("getById", () => {
+  describe("GetById", () => {
     let data: Gateway;
 
     beforeEach(() => {
@@ -56,7 +56,7 @@ describe("Gateways axios calls", () => {
     });
   });
 
-  describe("getPeripherals", () => {
+  describe("GetPeripherals", () => {
     let data: Peripheral[];
 
     beforeEach(() => {
@@ -86,7 +86,7 @@ describe("Gateways axios calls", () => {
     });
   });
 
-  describe("create", () => {
+  describe("Create", () => {
     let data: Gateway;
 
     beforeEach(() => {
@@ -107,11 +107,11 @@ describe("Gateways axios calls", () => {
       const response = await Gateway.create(data);
 
       expect(axios.post).toHaveBeenCalled();
-      expect(response).toEqual(data);
+      expect(response).toEqual("");
     });
   });
 
-  describe("update", () => {
+  describe("Update", () => {
     let data: Gateway;
 
     beforeEach(() => {
@@ -134,11 +134,11 @@ describe("Gateways axios calls", () => {
       const response = await Gateway.update(1, data);
 
       expect(axios.put).toHaveBeenCalled();
-      expect(response).toEqual(data);
+      expect(response).toEqual("");
     });
   });
 
-  describe("delete", () => {
+  describe("Delete", () => {
     let data: Gateway[];
 
     beforeEach(() => {
@@ -161,7 +161,7 @@ describe("Gateways axios calls", () => {
       const response = await Gateway.delete(1);
 
       expect(axios.delete).toHaveBeenCalled();
-      expect(response).toEqual(data);
+      expect(response).toEqual("");
     });
   });
 });

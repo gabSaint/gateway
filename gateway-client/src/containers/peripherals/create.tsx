@@ -3,13 +3,15 @@ import { useParams, useHistory } from "react-router-dom";
 
 import PeripheralForm from "./form";
 import Peripheral from "models/peripheral";
+import Message from "components/message";
 
 function CreatePeripheral() {
   const { id } = useParams<any>();
   const history = useHistory();
 
   const handleSubmit = useCallback((peripheral: Peripheral) => {
-    Peripheral.create(id, peripheral).then(() => {
+    Peripheral.create(id, peripheral).then((error) => {
+      <Message error={error} />;
       history.push(`/gateways/${id}`);
     });
   }, []);

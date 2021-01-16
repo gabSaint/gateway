@@ -1,4 +1,5 @@
 import axios from "axios";
+import Peripheral from "./peripheral";
 
 export default class Gateway {
   constructor(
@@ -14,7 +15,7 @@ export default class Gateway {
     if (response.status === 200) {
       return response.data;
     }
-    return [];
+    return [] as Gateway[];
   };
 
   static getById = async (id: number) => {
@@ -32,30 +33,33 @@ export default class Gateway {
     if (response.status === 200) {
       return response.data;
     }
-    return [];
+    return [] as Peripheral[];
   };
 
   static create = async (data: Gateway) => {
     const response = await axios.post(`/api/gateways`, data);
 
     if (response.status === 201) {
-      return response.data;
+      return "";
     }
+    return "Error while trying to create gateway.";
   };
 
   static update = async (id: number, data: Gateway) => {
     const response = await axios.put(`/api/gateways/${id}`, data);
 
     if (response.status === 200) {
-      return response.data;
+      return "";
     }
+    return "Error while trying to update gateway.";
   };
 
   static delete = async (id: number) => {
     const response = await axios.delete(`/api/gateways/${id}`);
 
     if (response.status === 200) {
-      return response.data;
+      return "";
     }
+    return "Error while trying to delete gateway.";
   };
 }

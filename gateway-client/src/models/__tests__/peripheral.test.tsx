@@ -28,7 +28,7 @@ describe("Peripheral axios calls", () => {
     });
   });
 
-  describe("getById", () => {
+  describe("GetById", () => {
     let data: Peripheral;
 
     beforeEach(() => {
@@ -55,7 +55,7 @@ describe("Peripheral axios calls", () => {
     });
   });
 
-  describe("create", () => {
+  describe("Create", () => {
     let data: Peripheral;
 
     beforeEach(() => {
@@ -76,11 +76,11 @@ describe("Peripheral axios calls", () => {
       const response = await Peripheral.create(1, data);
 
       expect(axios.post).toHaveBeenCalled();
-      expect(response).toEqual(data);
+      expect(response).toEqual("");
     });
   });
 
-  describe("update", () => {
+  describe("Update", () => {
     let data: Peripheral;
 
     beforeEach(() => {
@@ -103,11 +103,11 @@ describe("Peripheral axios calls", () => {
       const response = await Peripheral.update(2, data);
 
       expect(axios.put).toHaveBeenCalled();
-      expect(response).toEqual(data);
+      expect(response).toEqual("");
     });
   });
 
-  describe("delete", () => {
+  describe("Delete", () => {
     let data: Peripheral[];
 
     beforeEach(() => {
@@ -130,7 +130,7 @@ describe("Peripheral axios calls", () => {
       const response = await Peripheral.delete(2);
 
       expect(axios.delete).toHaveBeenCalled();
-      expect(response).toEqual(data);
+      expect(response).toEqual("");
     });
   });
 });

@@ -10,7 +10,7 @@ describe("Layout", () => {
 
   beforeEach(() => {
     props = {
-      children: <p id="children"></p>,
+      children: <p id="child" />,
     };
     wrapperLayout = shallow(<Layout {...props} />);
   });
@@ -31,7 +31,7 @@ describe("Layout", () => {
   });
 
   it("renders children", () => {
-    const children = wrapperLayout.find("p#children");
+    const children = wrapperLayout.find("p#child");
     expect(children).toHaveLength(1);
   });
 });

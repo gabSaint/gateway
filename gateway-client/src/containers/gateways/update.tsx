@@ -3,6 +3,7 @@ import { useHistory, useParams } from "react-router-dom";
 
 import Gateway from "models/gateway";
 import GatewayForm from "./form";
+import Message from "components/message";
 
 function UpdateGateway() {
   const [gateway, setGateway] = useState<Gateway>();
@@ -15,13 +16,17 @@ function UpdateGateway() {
   }, []);
 
   const handleRemove = useCallback(() => {
-    Gateway.delete(id).then(() => history.push("/gateways"));
+    Gateway.delete(id).then((error) => {
+      <Message error={error} />;
+      history.push("/gateways");
+    });
   }, []);
 
   const handleSubmit = useCallback((gateway: Gateway) => {
-    Gateway.update(id, gateway || ({} as Gateway)).then(() =>
-      history.push("/gateways")
-    );
+    Gateway.update(id, gateway || ({} as Gateway)).then((error) => {
+      <Message error={error} />;
+      history.push("/gateways");
+    });
   }, []);
 
   return (

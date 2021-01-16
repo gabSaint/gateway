@@ -15,7 +15,7 @@ export default class Peripheral {
     if (response.status === 200) {
       return response.data;
     }
-    return [];
+    return [] as Peripheral[];
   };
 
   static getById = async (id: number) => {
@@ -31,23 +31,26 @@ export default class Peripheral {
     const response = await axios.post(`/api/peripherals`, data);
 
     if (response.status === 201) {
-      return response.data;
+      return "";
     }
+    return "Error while trying to create peripheral";
   };
 
   static update = async (id: number, data: Peripheral) => {
     const response = await axios.put(`/api/peripherals/${id}`, data);
 
     if (response.status === 200) {
-      return response.data;
+      return "";
     }
+    return "Error while trying to update peripheral";
   };
 
   static delete = async (id: number) => {
     const response = await axios.delete(`/api/peripherals/${id}`);
 
     if (response.status === 200) {
-      return response.data;
+      return "";
     }
+    return "Error while trying to delete peripheral";
   };
 }
