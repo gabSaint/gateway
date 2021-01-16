@@ -1,96 +1,53 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ListPeripherals renders correctly when listing a gateway's peripherals 1`] = `
-Array [
-  <h2>
-    Peripherals
-  </h2>,
-  <table
-    className="ui definition table"
-  >
-    <thead>
-      <tr>
-        <th>
-          UID
-        </th>
-        <th>
-          Vendor
-        </th>
-        <th>
-          Date
-        </th>
-        <th>
-          Status
-        </th>
-        <th>
-          GatewayId
-        </th>
-        <th>
-          Operations
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          1
-        </td>
-        <td>
-          ASF
-        </td>
-        <td>
-          21/23/24
-        </td>
-        <td>
-          online
-        </td>
-        <td>
-          1
-        </td>
-        <td>
-          <div>
-            <button
-              className="button-edit"
-              data-test="form-button-edit"
-            >
-              edit
-            </button>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>,
-]
-`;
-
-exports[`ListPeripherals renders correctly when listing all peripherals 1`] = `
-Array [
-  <h2>
-    Peripherals
-  </h2>,
-  <table
-    className="ui definition table"
-  >
-    <thead>
-      <tr>
-        <th>
-          UID
-        </th>
-        <th>
-          Vendor
-        </th>
-        <th>
-          Date
-        </th>
-        <th>
-          Status
-        </th>
-        <th>
-          Operations
-        </th>
-      </tr>
-    </thead>
-    <tbody />
-  </table>,
-]
+<table
+  className="ui definition table"
+>
+  <thead>
+    <tr>
+      <th>
+        UID
+      </th>
+      <th>
+        Vendor
+      </th>
+      <th>
+        Date
+      </th>
+      <th>
+        Status
+      </th>
+      <th>
+        Operations
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        1
+      </td>
+      <td>
+        ASF
+      </td>
+      <td>
+        21/23/24
+      </td>
+      <td>
+        online
+      </td>
+      <td>
+        <div>
+          <button
+            className="button-edit"
+            data-test="form-button-edit"
+          >
+            edit
+          </button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
 `;

@@ -40,11 +40,10 @@ describe("Routes", () => {
       "/gateways/:id/edit",
       "/gateways/:id/peripherals/create",
       "/gateways/:gateway_id/peripherals/:id/edit",
-      "/peripherals",
     ];
 
     const routes = wrapperRoutes.find("Route");
-    expect(routes).toHaveLength(8);
+    expect(routes).toHaveLength(7);
 
     paths.forEach((path: any) => {
       expect(routes.find(`[path='${path}']`)).toHaveLength(1);

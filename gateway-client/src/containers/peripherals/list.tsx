@@ -1,53 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 import Table from "../../components/table";
 import Peripheral from "../../models/peripheral";
 
 export interface Props {
-  peripherals?: Peripheral[];
-  fromGate?: boolean;
+  peripherals: Peripheral[];
 }
 
 function ListPeripherals(props: Props) {
-  const all = !props.fromGate;
-
-  const [peripherals, setPeripherals] = useState<Peripheral[]>(
-    props.peripherals || []
-  );
-  const [headers, setHeaders] = useState([
-    "UID",
-    "Vendor",
-    "Date",
-    "Status",
-    "Operations",
-  ]);
-
-  useEffect(() => {
-    if (all) {
-      Peripheral.getAll().then((data) => setPeripherals(data));
-      setHeaders([
-        "UID",
-        "Vendor",
-        "Date",
-        "Status",
-        "GatewayId",
-        "Operations",
-      ]);
-    }
-  }, [all]);
+  const { peripherals } = props;
 
   return (
     <React.Fragment>
-      {all && <h2>Peripherals</h2>}
-      <Table headers={headers}>
+      <Table headers={["UID", "Vendor", "Date", "Status", "Operations"]}>
         {peripherals.map((peripheral, k) => (
           <tr key={k}>
             <td>{peripheral.id}</td>
             <td>{peripheral.vendor}</td>
             <td>{peripheral.date}</td>
             <td>{peripheral.status}</td>
-            {all && <td>{peripheral.gatewayId}</td>}
             <td>
               <Link
                 to={`/gateways/${peripheral.gatewayId}/peripherals/${peripheral.id}/edit`}

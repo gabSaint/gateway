@@ -13,8 +13,8 @@ export default class Peripheral {
     try {
       const response = await axios.get(`/api/peripherals`);
       return response.data;
-    } catch ({ response }) {
-      return response.data.detail;
+    } catch {
+      return [];
     }
   };
 
@@ -22,8 +22,8 @@ export default class Peripheral {
     try {
       const response = await axios.get(`/api/peripherals/${id}`);
       return response.data;
-    } catch ({ response }) {
-      return response.data.detail;
+    } catch {
+      return {} as Peripheral;
     }
   };
 

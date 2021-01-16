@@ -1,5 +1,4 @@
 import axios from "axios";
-import Peripheral from "./peripheral";
 
 export default class Gateway {
   constructor(
@@ -13,8 +12,8 @@ export default class Gateway {
     try {
       const response = await axios.get(`/api/gateways`);
       return response.data;
-    } catch ({ response }) {
-      return response.data.detail;
+    } catch {
+      return [];
     }
   };
 
@@ -22,8 +21,8 @@ export default class Gateway {
     try {
       const response = await axios.get(`/api/gateways/${id}`);
       return response.data;
-    } catch ({ response }) {
-      return response.data.detail;
+    } catch {
+      return {} as Gateway;
     }
   };
 
@@ -31,8 +30,8 @@ export default class Gateway {
     try {
       const response = await axios.get(`/api/gateways/${id}/peripherals`);
       return response.data;
-    } catch ({ response }) {
-      return response.data.detail;
+    } catch {
+      return [];
     }
   };
 

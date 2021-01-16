@@ -8,24 +8,6 @@ Array [
     <div>
       Home
     </div>
-    <div>
-      Peripherals
-    </div>
-    <div
-      className="right item"
-    >
-      <div
-        className="ui icon input"
-      >
-        <input
-          placeholder="Search Gateway..."
-          type="text"
-        />
-        <i
-          className="search icon"
-        />
-      </div>
-    </div>
   </div>,
   <div
     className="ui container"

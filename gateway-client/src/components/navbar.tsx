@@ -7,15 +7,6 @@ function Navbar() {
       <Link to="/" className="active item">
         Home
       </Link>
-      <Link to="/peripherals" className="item">
-        Peripherals
-      </Link>
-      <div className="right item">
-        <div className="ui icon input">
-          <input type="text" placeholder="Search Gateway..." />
-          <i className="search icon"></i>
-        </div>
-      </div>
     </div>
   );
 }

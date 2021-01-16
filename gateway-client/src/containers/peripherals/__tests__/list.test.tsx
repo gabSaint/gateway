@@ -7,7 +7,6 @@ import Peripheral from "../../../models/peripheral";
 
 describe("ListPeripherals", () => {
   let wrapperListPeripherals: ShallowWrapper | ReactWrapper;
-  let wrapperListGatewayPeripherals: ShallowWrapper | ReactWrapper;
   let props: PeripheralProps;
 
   beforeEach(() => {
@@ -15,15 +14,7 @@ describe("ListPeripherals", () => {
       peripherals: [new Peripheral(1, "ASF", "21/23/24", "online", 1)],
     };
 
-    wrapperListPeripherals = shallow(<ListPeripherals />);
-    wrapperListGatewayPeripherals = shallow(
-      <ListPeripherals {...props} fromGate />
-    );
-  });
-
-  it("renders correctly when listing all peripherals", () => {
-    const tree = renderer.create(<ListPeripherals />).toJSON();
-    expect(tree).toMatchSnapshot();
+    wrapperListPeripherals = shallow(<ListPeripherals {...props} />);
   });
 
   it("renders correctly when listing a gateway's peripherals", () => {
@@ -38,29 +29,23 @@ describe("ListPeripherals", () => {
     });
 
     it("renders less than 11 table rows", () => {
-      const tableRows = wrapperListGatewayPeripherals.find("tr");
+      const tableRows = wrapperListPeripherals.find("tr");
       expect(tableRows.length).toBeLessThanOrEqual(11);
     });
 
     it("renders 5 td foreach tr in body when showing peripheral", () => {
-      const tableBodyRows = wrapperListGatewayPeripherals.find("tr");
-      const tableBodyColumns = wrapperListGatewayPeripherals.find("tr>td");
+      const tableBodyRows = wrapperListPeripherals.find("tr");
+      const tableBodyColumns = wrapperListPeripherals.find("tr>td");
       expect(tableBodyColumns.length).toBe(5 * tableBodyRows.length);
     });
 
     it("renders correctly the peripheral", () => {
-      const tableBodyColumns = wrapperListGatewayPeripherals.find("tr>td");
+      const tableBodyColumns = wrapperListPeripherals.find("tr>td");
 
       const attributes = ["1", "ASF", "21/23/24", "online"];
       attributes.forEach((attr: string, i: number) => {
         expect(tableBodyColumns.at(i).text()).toBe(attr);
       });
-    });
-
-    it("renders 6 td foreach tr in body when showing all", () => {
-      const tableBodyRows = wrapperListPeripherals.find("tr");
-      const tableBodyColumns = wrapperListPeripherals.find("tr>td");
-      expect(tableBodyColumns.length).toBe(6 * tableBodyRows.length);
     });
   });
 
