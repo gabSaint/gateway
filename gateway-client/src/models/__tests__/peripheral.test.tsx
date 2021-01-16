@@ -69,10 +69,7 @@ describe("Peripheral axios calls", () => {
 
     it("calls axios with correct url", async () => {
       await Peripheral.create(1, data);
-      expect(axios.post).toHaveBeenCalledWith(
-        "/api/gateways/1/peripherals",
-        data
-      );
+      expect(axios.post).toHaveBeenCalledWith("/api/peripherals", data);
     });
 
     it("returns data on correct status code", async () => {
