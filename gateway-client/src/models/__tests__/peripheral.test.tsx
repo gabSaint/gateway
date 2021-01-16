@@ -68,15 +68,8 @@ describe("Peripheral axios calls", () => {
     });
 
     it("calls axios with correct url", async () => {
-      await Peripheral.create(1, data);
+      await Peripheral.create(data);
       expect(axios.post).toHaveBeenCalledWith("/api/peripherals", data);
-    });
-
-    it("returns data on correct status code", async () => {
-      const response = await Peripheral.create(1, data);
-
-      expect(axios.post).toHaveBeenCalled();
-      expect(response).toEqual("");
     });
   });
 
@@ -98,13 +91,6 @@ describe("Peripheral axios calls", () => {
       await Peripheral.update(2, data);
       expect(axios.put).toHaveBeenCalledWith("/api/peripherals/2", data);
     });
-
-    it("returns data on correct status code", async () => {
-      const response = await Peripheral.update(2, data);
-
-      expect(axios.put).toHaveBeenCalled();
-      expect(response).toEqual("");
-    });
   });
 
   describe("Delete", () => {
@@ -124,13 +110,6 @@ describe("Peripheral axios calls", () => {
     it("calls axios with correct url", async () => {
       await Peripheral.delete(2);
       expect(axios.delete).toHaveBeenCalledWith("/api/peripherals/2");
-    });
-
-    it("returns data on correct status code", async () => {
-      const response = await Peripheral.delete(2);
-
-      expect(axios.delete).toHaveBeenCalled();
-      expect(response).toEqual("");
     });
   });
 });

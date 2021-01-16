@@ -102,13 +102,6 @@ describe("Gateways axios calls", () => {
       await Gateway.create(data);
       expect(axios.post).toHaveBeenCalledWith("/api/gateways", data);
     });
-
-    it("returns data on correct status code", async () => {
-      const response = await Gateway.create(data);
-
-      expect(axios.post).toHaveBeenCalled();
-      expect(response).toEqual("");
-    });
   });
 
   describe("Update", () => {
@@ -129,13 +122,6 @@ describe("Gateways axios calls", () => {
       await Gateway.update(1, data);
       expect(axios.put).toHaveBeenCalledWith("/api/gateways/1", data);
     });
-
-    it("returns data on correct status code", async () => {
-      const response = await Gateway.update(1, data);
-
-      expect(axios.put).toHaveBeenCalled();
-      expect(response).toEqual("");
-    });
   });
 
   describe("Delete", () => {
@@ -155,13 +141,6 @@ describe("Gateways axios calls", () => {
     it("calls axios with correct url", async () => {
       await Gateway.delete(1);
       expect(axios.delete).toHaveBeenCalledWith("/api/gateways/1");
-    });
-
-    it("returns data on correct status code", async () => {
-      const response = await Gateway.delete(1);
-
-      expect(axios.delete).toHaveBeenCalled();
-      expect(response).toEqual("");
     });
   });
 });

@@ -1,20 +1,22 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { useParams, useHistory } from "react-router-dom";
 
 import PeripheralForm from "./form";
 import Peripheral from "models/peripheral";
-import Message from "components/message";
 
 function CreatePeripheral() {
   const { id } = useParams<any>();
   const history = useHistory();
 
-  const handleSubmit = useCallback((peripheral: Peripheral) => {
-    Peripheral.create(id, peripheral).then((error) => {
-      <Message error={error} />;
-      history.push(`/gateways/${id}`);
-    });
-  }, []);
+  const handleSubmit = async (peripheral: Peripheral) => {
+    const error = await Peripheral.create(peripheral);
+
+    if (error) {
+      alert(error);
+    } else {
+      history.goBack();
+    }
+  };
 
   return (
     <React.Fragment>
@@ -24,7 +26,7 @@ function CreatePeripheral() {
           {
             status: "online",
             date: new Date().toDateString(),
-            gatewayId: id,
+            gatewayId: Number(id),
           } as Peripheral
         }
         handleSubmit={handleSubmit}

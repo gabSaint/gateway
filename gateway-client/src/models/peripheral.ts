@@ -10,47 +10,44 @@ export default class Peripheral {
   ) {}
 
   static getAll = async () => {
-    const response = await axios.get(`/api/peripherals`);
-
-    if (response.status === 200) {
+    try {
+      const response = await axios.get(`/api/peripherals`);
       return response.data;
+    } catch ({ response }) {
+      return response.data.detail;
     }
-    return [] as Peripheral[];
   };
 
   static getById = async (id: number) => {
-    const response = await axios.get(`/api/peripherals/${id}`);
-
-    if (response.status === 200) {
+    try {
+      const response = await axios.get(`/api/peripherals/${id}`);
       return response.data;
+    } catch ({ response }) {
+      return response.data.detail;
     }
-    return {} as Peripheral;
   };
 
-  static create = async (gate_id: number, data: Peripheral) => {
-    const response = await axios.post(`/api/peripherals`, data);
-
-    if (response.status === 201) {
-      return "";
+  static create = async (data: Peripheral) => {
+    try {
+      await axios.post(`/api/peripherals`, data);
+    } catch ({ response }) {
+      return response.data.detail;
     }
-    return "Error while trying to create peripheral";
   };
 
   static update = async (id: number, data: Peripheral) => {
-    const response = await axios.put(`/api/peripherals/${id}`, data);
-
-    if (response.status === 200) {
-      return "";
+    try {
+      await axios.put(`/api/peripherals/${id}`, data);
+    } catch ({ response }) {
+      return response.data.detail;
     }
-    return "Error while trying to update peripheral";
   };
 
   static delete = async (id: number) => {
-    const response = await axios.delete(`/api/peripherals/${id}`);
-
-    if (response.status === 200) {
-      return "";
+    try {
+      await axios.delete(`/api/peripherals/${id}`);
+    } catch ({ response }) {
+      return response.data.detail;
     }
-    return "Error while trying to delete peripheral";
   };
 }

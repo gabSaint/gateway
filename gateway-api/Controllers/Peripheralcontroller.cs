@@ -37,7 +37,6 @@ namespace gateway_api.Controllers
         }
 
         [HttpPost]
-        [Route("")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult<IQueryable<Peripheral>> PostPeripheral(Peripheral peripheral)
