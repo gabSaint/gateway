@@ -49,7 +49,7 @@ namespace gateway_api.Models
                 var status = statuss[rnd.Next(0, 2)];
                 var date = dates[rnd.Next(0, 5)];
                 var id = $"{x,-3:000}";
-                var gatewayId = rnd.Next(0, 20);
+                var gatewayId = x%20;
 
                 return new Peripheral
                 {
